@@ -1,7 +1,7 @@
 .LIContent1{
     display: flex;
     padding: 0;
-    height:42.9rem;
+    height:47rem;
     color: white;
     font-size: 2.5rem;
     font-weight: 700;
@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    margin: 0 20px;
     width: 50%;
     background-color: rgb(158, 44, 2);
 }

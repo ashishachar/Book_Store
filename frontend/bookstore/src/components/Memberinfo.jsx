@@ -4,10 +4,12 @@ import React from 'react';
 
 function Memberinfo() {
   return (
-    <div className="MIHeader">
-        <h2>Member Info</h2>
-        
+    <div>
+        <div className="MIHeader">
+        <h2>Members&#39; Info</h2>
+        </div>
     </div>
+    
   )
 }
 
