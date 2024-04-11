@@ -1,0 +1,63 @@
+.LIContent1{
+    display: flex;
+    padding: 0;
+    height:42.9rem;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.LIOrgTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 50%;
+    background-color: rgb(158, 44, 2);
+}
+
+.LIContent2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border-left: solid;
+    border-color: rgb(158, 44, 2);
+    border-width: 5px;
+}
+
+.LIContent3{
+    justify-content: center;
+    margin: 20px;
+    background-color: beige;
+    color: black;
+    padding: 50px;
+    border-radius: 2.5rem;
+}
+
+.LIContent3>p{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin:20px;
+}
+
+.LIUserName{
+    background-color: rgb(178, 176, 176);
+    border-radius: 0.5rem;
+    height: 35px;
+    width: 200px;
+    margin: 10px;
+    border: none;
+    color: black;
+}
+
+.LILoginBtn{
+    background-color: orangered;
+    color: white;
+    height: 45px;
+    margin: 20px;
+    width: 100px;
+    font-size: medium;
+}
