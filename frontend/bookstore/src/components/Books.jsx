@@ -1,9 +1,14 @@
 // import React from 'react'
 
+import Navbar from "./Navbar";
+
 function Books() {
   let bookData = [0, 0, 0, 0, 0, 0, 0];
 
   return (
+    <>
+    <Navbar />
+    <br />
     <div className="container">
       <div className="card-deck mb-3 text-center row">
         {bookData.map((book, bookID) => {
@@ -16,13 +21,13 @@ function Books() {
                 <div className="card-body">
                   <h4 className="text-truncate">Harry Potter and the prisoner of Azkaban</h4>
                   <div className="d-flex w-100">
-                    <div className="w-25 text-start">Author</div>
+                    <div className="w-25 text-start text-truncate">Author</div>
                     <div className="w-75 text-start text-truncate">J K Rowling</div>
                   </div>
                   <div className="d-flex w-100 mt-2">
                     <div className="w-75 d-flex  text-start">
-                    <div className="btn btn-primary mx-2 p-1 ">Fantasy</div>
-                    <div className="btn btn-primary mx-2 p-1">Adventure</div>
+                    <div className="btn btn-primary p-1 " style={{marginRight : "0.5rem"}}>Fantasy</div>
+                    <div className="btn btn-primary p-1" style={{marginRight : "0.5rem"}}>Adventure</div>
                     </div>
                     <div className="w-25 text-end">
                       <div className="btn btn-success">13</div>
@@ -35,6 +40,7 @@ function Books() {
         })}
       </div>
     </div>
+    </>
   );
 }
 
