@@ -1,5 +1,28 @@
 .MIHeader{
     background-color: orangered;
-    padding: 1px;
+    color: white;
+    padding: 10px;
     margin: 0;
+}
+
+.MIAddBtn{
+    display: flex;
+    align-items: center;
+    background-color: rgb(30,30,30);
+    color: white;
+    font-weight: 500;
+    margin: 10px;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 1rem;
+    height: 40px;
+}
+
+.MIAddContainer{
+    display: flex;
+    justify-content: right;
+}
+
+.MIAddIcon{
+    font-size: 1.5rem !important;
 }
