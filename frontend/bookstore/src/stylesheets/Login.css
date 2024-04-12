@@ -14,7 +14,12 @@
     align-items: center;
     margin: 0 20px;
     width: 50%;
-    background-color: rgb(158, 44, 2);
+    background: url("../assets/Image3.jpg");
+}
+
+.LIHeader{
+    color: brown;
+    margin: 10px;
 }
 
 .LIContent2{
@@ -24,7 +29,7 @@
     align-items: center;
     width: 50%;
     border-left: solid;
-    border-color: rgb(158, 44, 2);
+    border-color: brown;
     border-width: 5px;
 }
 
@@ -55,7 +60,7 @@
 }
 
 .LILoginBtn{
-    background-color: orangered;
+    background-color: brown;
     color: white;
     height: 45px;
     margin: 20px;

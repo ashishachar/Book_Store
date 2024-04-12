@@ -5,8 +5,9 @@ import React from 'react';
 function Login() {
   return (
     <div className="LIContent1">
-        <div className="LIOrgTitle">ABC Book Store</div>
+        <div className="LIOrgTitle"></div>
         <div className="LIContent2">
+            <div className="LIHeader">ABC Book Store</div>
             <div className="LIContent3">
                 <p>Login</p>
                 <input className="LIUserName" type="text" placeholder="Enter user name"></input><br/>
