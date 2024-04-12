@@ -11,7 +11,7 @@ class BookDetails(models.Model):
     no_of_copies = models.IntegerField()
 
 class Category(models.Model):
-    book =models.ForeignKey("BookDetails", on_delete=models.CASCADE)
+    book =models.ForeignKey(BookDetails, related_name='categories', on_delete=models.CASCADE)
     categ = models.CharField(max_length=30)
 
 class Members(models.Model):
@@ -21,8 +21,8 @@ class Members(models.Model):
     penalty = models.DecimalField(max_digits=4, decimal_places=2)
 
 class Transaction(models.Model):
-    memb = models.ForeignKey("Members", on_delete=models.CASCADE)
-    book = models.ForeignKey("BookDetails", on_delete=models.CASCADE)
+    memb = models.ForeignKey(Members, on_delete=models.CASCADE)
+    book = models.ForeignKey(BookDetails, on_delete=models.CASCADE)
     borrow_date = models.DateField()
     return_date = models.DateField()
     status = models.BooleanField()

@@ -6,15 +6,25 @@ class LoginsSerializer(serializers.ModelSerializer):
         model = Logins
         fields = ['user_name', 'user_password']
 
-class BookDetailsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BookDetails
-        fields = ['author', 'title', 'no_of_copies']
+# class BookDetailsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = BookDetails
+#         fields = '__all__'
+#         #fields = ['author', 'title', 'no_of_copies', 'book_category']
 
 class CategorySerializer(serializers.ModelSerializer):
+    # books = BookDetailsSerializer(read_only=True, many=True)
     class Meta:
         model = Category
-        fields = ['book_no', 'categ']
+        #fields = '__all__'
+        fields = ['categ']
+
+class BookDetailsSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(read_only=True, many=True)
+    class Meta:
+        model = BookDetails
+        # fields = '__all__'
+        fields = ['author', 'title', 'no_of_copies', "categories"]
 
 class MembersSerializer(serializers.ModelSerializer):
     class Meta:
