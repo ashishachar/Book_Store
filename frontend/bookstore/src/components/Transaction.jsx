@@ -14,7 +14,12 @@ function Transaction({infoName, infoTitle, infoBorrow, infoReturned, infoStatus}
         <div className='TSChars'>{infoTitle}</div>
         <div className='TSDates'>{infoBorrow}</div>
         <div className='TSDates'>{infoReturned}</div>
-        <div className='TSStatus'>{tranacstatus=="Y"?<FaCheckCircle className="TSDone"/>:<IoMdCloseCircle className='TSPending' />}</div>
+        <div className='TSStatus'>
+            {tranacstatus == "Y" ?
+                <FaCheckCircle className="TSDone"/>:
+                <IoMdCloseCircle className='TSPending' />
+            }
+        </div>
     </div>
   )
 }

@@ -27,16 +27,15 @@ function Transactioninfo() {
         <div className="TIList">
             {
                 transaclist ? 
-                Object.keys(transaclist).map((transac,index)=>{
-                    console.log(">>>>",transaclist[transac]);
+                Object.values(transaclist).map((transac,index)=>{
                     return (
                         <Transaction 
                             key={index} 
-                            infoName={transaclist[transac].name} 
-                            infoTitle={transaclist[transac].title} 
-                            infoBorrow={transaclist[transac].borrowed} 
-                            infoReturned={transaclist[transac].returned} 
-                            infoStatus={transaclist[transac].Status}
+                            infoName={transac.name} 
+                            infoTitle={transac.title} 
+                            infoBorrow={transac.borrowed} 
+                            infoReturned={transac.returned} 
+                            infoStatus={transac.Status}
                         />
                     )
                 })
