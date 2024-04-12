@@ -1,3 +1,7 @@
+.MIContainer{
+    min-height: 47rem;
+}
+
 .MIHeader{
     background-color: orangered;
     color: white;
@@ -11,7 +15,7 @@
     background-color: rgb(30,30,30);
     color: white;
     font-weight: 500;
-    margin: 10px;
+    margin: 20px 20px 10px 0;
     width: fit-content;
     padding: 5px 10px;
     border-radius: 1rem;
@@ -25,4 +29,36 @@
 
 .MIAddIcon{
     font-size: 1.5rem !important;
+}
+
+.MIListHeader{
+    display: flex;
+    align-items: center;
+    background-color: rgb(30,30,30);;
+    color: white;
+    margin: 10px 20px;
+    height: 45px;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.MIList{
+    padding-bottom: 10px;
+}
+
+.MIId{
+    width:10%
+}
+
+.MIChars{
+    width: 25%;
+}
+
+.MINumbers{
+    width: 15%;
+}
+
+.MIDelete{
+    width: 10%;
 }
