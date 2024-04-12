@@ -1,0 +1,39 @@
+.TIContainer{
+    padding: 0;
+    min-height: 100vh;
+}
+
+.TIHeader{
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    margin: 0;
+}
+
+.TIListHeader{
+    display: flex;
+    align-items: center;
+    background-color: rgb(30,30,30);;
+    color: white;
+    margin: 30px 20px 10px 20px;
+    height: 45px;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.TIList{
+    padding-bottom: 10px;
+}
+
+.TIChars{
+    width:25%
+}
+
+.TIDates{
+    width: 20%;
+}
+
+.TIStatus{
+    width: 10%;
+}
