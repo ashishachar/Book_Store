@@ -1,7 +1,8 @@
 .LIContent1{
     display: flex;
-    padding: 0;
-    height:47rem;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 100vh;
     color: white;
     font-size: 2.5rem;
     font-weight: 700;
