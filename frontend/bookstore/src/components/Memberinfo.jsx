@@ -1,16 +1,23 @@
 /* eslint-disable no-unused-vars */
 import "../stylesheets/Memberinfo.css";
-import React from 'react';
+import React, { useState } from 'react';
 import { IoMdAddCircle } from "react-icons/io";
 import Member from "./Member";
+import Addmember from "./Addmember";
 
 function Memberinfo() {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <div className="MIContainer">
         <div className="MIHeader">
         <h2>Members&#39; Info</h2>
         </div>
-        <div className="MIAddContainer">
+        <div className="MIAddContainer" onClick={()=>{setOpen(true)}}>
             <div className="MIAddBtn"><IoMdAddCircle className="MIAddIcon" />&nbsp;Add Member</div>
         </div>
         <div className="MIListHeader">
@@ -29,6 +36,7 @@ function Memberinfo() {
           <Member />
           <Member />
         </div>
+        {open && <Addmember closeModal={setOpen}/>}
         
     </div>
     

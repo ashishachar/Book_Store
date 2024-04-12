@@ -45,11 +45,10 @@
 .LIContent3>p{
     font-size: 2.5rem;
     font-weight: 600;
-    margin:20px;
 }
 
 .LIUserName{
-    font-size: large;
+    font-size: 1rem;
     background-color: rgb(60,60,60);
     border-radius: 0.5rem;
     height: 35px;
@@ -65,5 +64,5 @@
     height: 45px;
     margin: 20px;
     width: 100px;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }

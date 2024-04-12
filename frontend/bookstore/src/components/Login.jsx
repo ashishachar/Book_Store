@@ -10,8 +10,8 @@ function Login() {
             <div className="LIHeader">ABC Book Store</div>
             <div className="LIContent3">
                 <p>Login</p>
-                <input className="LIUserName" type="text" placeholder="Enter user name"></input><br/>
-                <input className="LIUserName" type="password" placeholder="Enter password"></input><br/>
+                <input className="LIUserName" type="text" placeholder="Enter User Name"></input><br/>
+                <input className="LIUserName" type="password" placeholder="Enter Password"></input><br/>
                 <button className="LILoginBtn">Login</button>
             </div>
         </div>
