@@ -27,7 +27,7 @@ function Memberinfo() {
         <h2>Members&#39; Info</h2>
         </div>
         <div className="MIAddContainer">
-            <div className="MIAddBtn" onClick={()=>{setOpen(true)}}><IoMdAddCircle className="MIAddIcon" />&nbsp;Add Member</div>
+            <button className="MIAddBtn" onClick={()=>{setOpen(true)}}><IoMdAddCircle className="MIAddIcon" />&nbsp;Add Member</button>
         </div>
         <div className="MIListHeader">
           <div className='MIId'>ID</div>
