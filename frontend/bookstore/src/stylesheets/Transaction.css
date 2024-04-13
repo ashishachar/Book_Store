@@ -1,0 +1,32 @@
+.TSContainer{
+    display: flex;
+    align-items: center;
+    background-color: rgb(192, 190, 190);
+    color: black;
+    margin: 5px 20px;
+    height: 45px;
+    border-radius: 0.5rem;
+}
+
+.TSChars{
+    width: 25%;
+}
+
+.TSDates{
+    width: 20%;
+}
+
+.TSStatus{
+    width: 10%;
+}
+
+.TSDone{
+    font-size: larger;
+    color: green;
+}
+
+.TSPending{
+    font-size: x-large;
+    color: rgb(202, 3, 3);
+}
+
