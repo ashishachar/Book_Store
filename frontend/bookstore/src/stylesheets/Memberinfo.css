@@ -1,0 +1,65 @@
+.MIContainer{
+    padding: 0;
+    min-height: 100vh;
+}
+
+.MIHeader{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 10px;
+    margin: 0;
+}
+
+.MIAddBtn{
+    display: flex;
+    align-items: center;
+    background-color: rgb(30,30,30);
+    color: white;
+    font-weight: 500;
+    margin: 20px 20px 10px 0;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 1rem;
+    height: 40px;
+}
+
+.MIAddContainer{
+    display: flex;
+    justify-content: right;
+}
+
+.MIAddIcon{
+    font-size: 1.5rem !important;
+}
+
+.MIListHeader{
+    display: flex;
+    align-items: center;
+    background-color: rgb(30,30,30);;
+    color: white;
+    margin: 10px 20px;
+    height: 45px;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.MIList{
+    padding-bottom: 10px;
+}
+
+.MIId{
+    width:10%
+}
+
+.MIChars{
+    width: 25%;
+}
+
+.MINumbers{
+    width: 15%;
+}
+
+.MIDelete{
+    width: 10%;
+}

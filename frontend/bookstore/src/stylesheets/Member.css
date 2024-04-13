@@ -1,0 +1,27 @@
+.MBContainer{
+    display: flex;
+    align-items: center;
+    background-color: rgb(192, 190, 190);
+    color: black;
+    margin: 5px 20px;
+    height: 45px;
+    border-radius: 0.5rem;
+}
+
+.MBId{
+    width:10%
+}
+
+.MBChars{
+    width: 25%;
+}
+
+.MBNumbers{
+    width: 15%;
+}
+
+.MBDelete{
+    width: 10%;
+    font-size: larger;
+}
+

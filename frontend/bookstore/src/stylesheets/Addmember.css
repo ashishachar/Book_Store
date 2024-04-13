@@ -1,0 +1,57 @@
+.AMBackground{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(50,50,50,0.89);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+
+.AMModal{
+    justify-content: center;
+    margin: 10px;
+    background-color: rgb(10,10,10);
+    color: white;
+    padding: 10px 40px 20px 40px;
+    border-radius: 2.5rem;
+    width:fit-content;
+}
+
+.AMBtnConatiner{
+    display: flex;
+    justify-content: right;
+}
+
+.AMClose{
+    background-color: rgb(10,10,10);
+    padding: 5px;
+}
+
+.AMTitle{
+    margin: 10px 0 20px 0;
+}
+
+.AMName{
+    font-size: 1rem;
+    background-color: rgb(60,60,60);
+    border-radius: 0.5rem;
+    height: 35px;
+    width: 200px;
+    margin: 10px;
+    border: none;
+    color: white;
+}
+
+.AMAdd{
+    background-color: brown;
+    color: white;
+    height: 35px;
+    margin: 10px;
+    padding: 5px;
+    width: 90px;
+    font-size: 1.1rem;
+    font-size: medium;
+    text-align: center;
+}
