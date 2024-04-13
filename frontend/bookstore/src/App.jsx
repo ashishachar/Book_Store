@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <Memberinfo />,
   },
   {
-    path: "/transactions",
+    path: "/transactions/",
     element: <Transactioninfo />,
   },
   {
@@ -19,9 +19,21 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/home",
+    path: "/home/",
     element: <Homepage />,
   },
+  {
+    path: "/books/",
+    element: <Books />,
+  },
+  {
+    path : '/books/add',
+    element : <BookUpdate />
+  },
+  {
+    path : '/users/info/' ,
+    element : <UserInfo/>
+  } ,
   {
     path: "/",
     element: <Homepage />,
