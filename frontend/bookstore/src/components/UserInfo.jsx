@@ -1,6 +1,6 @@
 // import React from 'react'
 import UserImg from "../assets/user.png";
-import { FaCheck } from "react-icons/fa";
+// import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
 function UserInfo() {

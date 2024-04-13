@@ -3,10 +3,13 @@
 import React from 'react';
 import "../stylesheets/Member.css";
 import { MdDelete } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
   return (
-    <div className='MBContainer'>
+    <Link to={'/members/info'}>
+      
+    <div className='MBContainer '>
         <div className='MBId'>{infoId}</div>
         <div className='MBChars'>{infoName}</div>
         <div className='MBChars'>{infoEmail}</div>
@@ -14,6 +17,7 @@ function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
         <div className='MBNumbers'>Rs.{infoPenalty}</div>
         <div className='MBDelete'><MdDelete /></div>
     </div>
+    </Link>
   )
 }
 

@@ -4,6 +4,10 @@ import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Memberinfo from "./components/Memberinfo";
 import Transactioninfo from "./components/Transactioninfo";
+import Books from './components/Books';
+import BookUpdate from './components/BookUpdate';
+import UserInfo from'./components/UserInfo';
+import UserUpdate from "./components/UserUpdate";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +35,12 @@ const router = createBrowserRouter([
     element : <BookUpdate />
   },
   {
-    path : '/users/info/' ,
+    path : '/members/info/' ,
     element : <UserInfo/>
+  } ,
+  {
+    path : '/members/add/' ,
+    element : <UserUpdate/>
   } ,
   {
     path: "/",
