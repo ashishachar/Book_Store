@@ -13,8 +13,8 @@ function Memberinfo() {
   };
 
   return (
-    <div className="MIContainer">
-        <div className="MIHeader">
+    <div className="MIContainer ">
+        <div className="MIHeader rounded">
         <h2>Members&#39; Info</h2>
         </div>
         <div className="MIAddContainer">

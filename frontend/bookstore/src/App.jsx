@@ -6,11 +6,11 @@ import Memberinfo from './components/Memberinfo';
 
 const router = createBrowserRouter([
   {
-    path: "/Memberinfo/",
+    path: "/members/",
     element: <Memberinfo />
   },
   {
-    path: "/Login/",
+    path: "/login/",
     element: <Login />
   },
   {
