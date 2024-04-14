@@ -19,9 +19,11 @@ from django.urls import path
 from bookstoreapp import views
 
 urlpatterns = [
-    path('books/',views.books_list),
+    path('books/all',views.books_list),
     path('admins/', views.admin_validation),
-    path('books/<int:pk>', views.book_details),
+    path('books/<int:pk>/info', views.book_details),
     path('users/', views.users_list),
-    path('users/<int:pk>', views.user_details)
+    path('users/<int:pk>', views.user_details),
+    path('book/<int:book_id>/transactions', views.book_transaction),
+    path('book/borrow', views.book_borrow_return),
 ]

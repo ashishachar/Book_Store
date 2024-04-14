@@ -24,5 +24,5 @@ class Transaction(models.Model):
     memb = models.ForeignKey(Members, on_delete=models.CASCADE)
     book = models.ForeignKey(BookDetails, on_delete=models.CASCADE)
     borrow_date = models.DateField()
-    return_date = models.DateField()
+    return_date = models.DateField(null=True)
     status = models.BooleanField()

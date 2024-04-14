@@ -1,8 +1,9 @@
 from bookstoreapp.models import Logins,BookDetails,Category,Members,Transaction
-from bookstoreapp.serializers import LoginsSerializer, BookDetailsSerializer,CategorySerializer,MembersSerializer, TransactionSerializer
+from bookstoreapp.serializers import LoginsSerializer, BookDetailsSerializer,CategorySerializer,MembersSerializer, TransactionSerializer,TransactionBorrowSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
+from django.contrib import messages
 
 @api_view(['POST'])
 def admin_validation(request):
@@ -66,3 +67,29 @@ def user_details(request,pk):
     if request.method == 'GET':     
         serialize = MembersSerializer(user)
         return Response(serialize.data)
+    
+@api_view(['GET'])
+def book_transaction(request,book_id):
+    try:
+        book = Transaction.objects.get(book_id=book_id)
+    except Transaction.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':     
+        serialize = TransactionSerializer(book)
+        return Response(serialize.data)
+    
+@api_view(['POST', 'PATCH'])
+def book_borrow_return(request):
+    if request.method == 'POST':
+        if BookDetails.objects.filter(id = request.data['book']).exists():
+            available = BookDetails.objects.get(id = request.data['book']).no_of_copies
+            if available > 0:
+                BookDetails.objects.filter(id = request.data['book']).update(no_of_copies=available-1)
+                re_data = request.data.update({'status': 'False'})
+                serialize = TransactionBorrowSerializer(data=request.data)
+                if serialize.is_valid():
+                    serialize.save()
+                    return Response(serialize.data, status=status.HTTP_201_CREATED)
+                return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
+            return Response('Book Not Available',status=status.HTTP_404_NOT_FOUND)
+        return Response('Book does not exist in the store',status=status.HTTP_404_NOT_FOUND)
