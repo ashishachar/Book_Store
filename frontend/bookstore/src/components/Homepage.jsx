@@ -1,19 +1,24 @@
 import { ImBooks } from "react-icons/im";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+// import React from 'react';
 function Homepage() {
+
+
+  
+  
   return (
     <div className="home container">
       <header>
         <div className="navbar navbar-dark bg-dark box-shadow rounded">
           <div className="container d-flex justify-content-between">
-            <a href="#" className="navbar-brand d-flex align-items-center">
+            <div className="navbar-brand d-flex align-items-center">
               <ImBooks />
               &nbsp;
               <Link to={"/home"}>
                 <strong>BookStore</strong>
               </Link>
-            </a>
+            </div>
           </div>
         </div>
       </header>
@@ -26,10 +31,9 @@ function Homepage() {
                   <div className="card mb-4 box-shadow">
                     <div className="card-body">
                       <p className="card-text text-start">
-                        <h5>
-                          <b>Books</b>
-                        </h5>
-                        <p>Show all books </p>
+                        <b>Books</b>
+                        <br />
+                        Show all books
                       </p>
                       <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">
@@ -62,10 +66,9 @@ function Homepage() {
                   <div className="card mb-4 box-shadow">
                     <div className="card-body">
                       <p className="card-text text-start">
-                        <h5>
-                          <b>Members</b>
-                        </h5>
-                        <p>Show all members scubscribed </p>
+                        <b>Members</b>
+                        <br />
+                        Show all members scubscribed
                       </p>
                       <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">
@@ -96,7 +99,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <h5 className="jumbotron-heading">Recent Transactions</h5>
+          <h5 className="jumbotron heading">Recent Transactions</h5>
           <table className="table table-hover">
             <thead className="thead-dark">
               <tr>
@@ -131,13 +134,13 @@ function Homepage() {
               </tr>
             </tbody>
           </table>
-          <p>
-            <Link to={'/transactions'}>
-            <div className="btn btn-primary">
-              All Transactions <FaArrowRight />
-            </div>
+          <div className="py-3">
+            <Link to={"/transactions"}>
+              <div className="btn btn-primary">
+                All Transactions <FaArrowRight />
+              </div>
             </Link>
-          </p>
+          </div>
         </div>
       </section>
     </div>
