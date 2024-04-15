@@ -1,5 +1,5 @@
 from bookstoreapp.models import Logins,BookDetails,Category,Members,Transaction
-from bookstoreapp.serializers import LoginsSerializer, BookDetailsSerializer,CategorySerializer,MembersSerializer, TransactionSerializer,TransactionBorrowSerializer
+from bookstoreapp.serializers import LoginsSerializer, BookDetailsSerializer,CategorySerializer,MembersSerializer, TransactionSerializer,TransactionBorrowSerializer,AddBookDetailsSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -26,11 +26,16 @@ def books_list(request):
         return Response(serialize.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
-        serialize = BookDetailsSerializer(data=request.data)
-        if serialize.is_valid():
-            serialize.save()
-            return Response(serialize.data, status=status.HTTP_201_CREATED)
-        return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
+        if BookDetails.objects.filter(title=request.data['title']).exists():
+            book_count=BookDetails.objects.get(title=request.data['title']).no_of_copies
+            BookDetails.objects.filter(title=request.data['title']).update(no_of_copies=book_count+request.data['no_of_copies'])
+            return Response("Successfully updated a Book",status=status.HTTP_200_OK)
+        else:
+            serialize = AddBookDetailsSerializer(data=request.data)
+            if serialize.is_valid():
+                serialize.save()
+                return Response(serialize.data, status=status.HTTP_201_CREATED)
+            return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
             
 @api_view(['GET'])
 def book_details(request,pk):
