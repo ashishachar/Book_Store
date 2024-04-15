@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     element : <BookUpdate />
   },
   {
-    path : '/members/info/' ,
+    path : '/members/:memID/' ,
     element : <UserInfo/>
   } ,
   {

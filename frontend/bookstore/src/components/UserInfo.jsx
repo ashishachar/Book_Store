@@ -2,8 +2,30 @@
 import UserImg from "../assets/user.png";
 // import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import {useParams} from 'react-router-dom';
+import {useState , useEffect} from 'react';
+import { getMemberByID } from "../utils/api-calls";
 
 function UserInfo() {
+
+
+  const d = useParams()['memID'];
+  
+  const [userData , setUserData] = useState({
+    "id": 0,
+    "name": "Rancho",
+    "email_id": "test@gmail.com",
+    "contact_no": 9695948721,
+    "penalty": "00.00"
+});
+  useEffect(()=>{
+    const fetchData = async() =>{
+      const temp = await getMemberByID(d);
+      setUserData(temp);
+    }
+    fetchData();
+  },[]);
+
   return (
     <>
       <div className="container bg-dark border rounded">
@@ -11,12 +33,12 @@ function UserInfo() {
           <div className="col-md-8">
             <div className=" bg-white text-dark rounded m-4">
               <br />
-              <h3 className="text-start mx-2 border-bottom pb-2">Rancho</h3>
+              <h3 className="text-start mx-2 border-bottom pb-2">{userData.name}</h3>
               
-              <h5 className="text-start mx-2">ID : #123745</h5>
-              <h5 className="text-start mx-2">Email : rancho@paws.com</h5>
-              <h5 className="text-start mx-2">Phone number : 987654321</h5>
-              <h5 className="text-start mx-2">Penalty : 355</h5>
+              <h5 className="text-start mx-2">ID : #{String(userData.id).padStart(5, '0')}</h5>
+              <h5 className="text-start mx-2">Email : {userData.email_id}</h5>
+              <h5 className="text-start mx-2">Phone number : {userData.contact_no}</h5>
+              <h5 className="text-start mx-2">Penalty : ${userData.penalty}</h5>
 
               <br />
             </div>
@@ -25,7 +47,7 @@ function UserInfo() {
             <img
               src={UserImg}
               alt=""
-              style={{ width: "50%" }}
+              style={{ width: "100%" }}
               className="img-fluid card-img"
             />
           </div>

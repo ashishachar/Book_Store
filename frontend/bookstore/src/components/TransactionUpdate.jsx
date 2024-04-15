@@ -35,7 +35,7 @@ function TransactionUpdate() {
 
   const onSubmitForm = async() =>{
     console.log('New Book Borrowed');
-    let res = {borrow_date : info.borrowDate , status : false , return_date : null , memb_id : info.member.value , book_id : info.book.value}
+    let res = {borrow_date : info.borrowDate , status : false , return_date : null , memb : info.member.value , book : info.book.value}
     console.log(res);
     await postTransaction(res);
   }
