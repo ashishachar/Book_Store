@@ -27,4 +27,5 @@ urlpatterns = [
     path('book/<int:book_id>/transactions', views.book_transaction),
     path('book/borrow', views.book_borrow),
     path('book/return',views.book_return),
+    path('transactions/',views.transaction_list),
 ]

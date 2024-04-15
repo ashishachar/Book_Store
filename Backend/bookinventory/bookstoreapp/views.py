@@ -106,3 +106,9 @@ def book_return(request):
             return Response('Book Return successfully', status=status.HTTP_200_OK)
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+@api_view(['GET'])
+def transaction_list(request):
+    if request.method == 'GET':
+        trans = Transaction.objects.all()
+        serialize = TransactionSerializer(trans, many=True)
+        return Response(serialize.data, status=status.HTTP_200_OK)
