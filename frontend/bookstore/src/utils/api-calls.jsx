@@ -20,9 +20,15 @@ async function getAllUsers()
     return data;
 }
 
+async function postTransaction(postInfo)
+{
+    console.log('Posting\n',postInfo);
+    await axios.post(dbURL+'/transactions/',postInfo);
+}
+
 export {
     apiCall , 
     getAllBooks ,
     getAllUsers ,
-
+    postTransaction
 }
