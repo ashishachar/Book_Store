@@ -27,43 +27,43 @@ function Memberinfo() {
     dataFetch();
   }, []);
 
-  const memberlist = [
-    {
-      id: "1001",
-      name: "Rancho",
-      email: "Rancho@paws.com",
-      phone: "9876543210",
-      Penalty: 0.0,
-    },
-    {
-      id: "1002",
-      name: "Snoopy",
-      email: "Snoopy@paws.com",
-      phone: "9976543210",
-      Penalty: 100.0,
-    },
-    {
-      id: "1003",
-      name: "Tippu",
-      email: "Tippu@lewis.com",
-      phone: "9777747678",
-      Penalty: 0.0,
-    },
-    {
-      id: "1004",
-      name: "Mothi",
-      email: "Mothi@paws.com",
-      phone: "9547568748",
-      Penalty: 0.0,
-    },
-    {
-      id: "1005",
-      name: "Tiger",
-      email: "Tiger@paws.com",
-      phone: "8465465464",
-      Penalty: 200.0,
-    },
-  ];
+  // const memberlist = [
+  //   {
+  //     id: "1001",
+  //     name: "Rancho",
+  //     email: "Rancho@paws.com",
+  //     phone: "9876543210",
+  //     Penalty: 0.0,
+  //   },
+  //   {
+  //     id: "1002",
+  //     name: "Snoopy",
+  //     email: "Snoopy@paws.com",
+  //     phone: "9976543210",
+  //     Penalty: 100.0,
+  //   },
+  //   {
+  //     id: "1003",
+  //     name: "Tippu",
+  //     email: "Tippu@lewis.com",
+  //     phone: "9777747678",
+  //     Penalty: 0.0,
+  //   },
+  //   {
+  //     id: "1004",
+  //     name: "Mothi",
+  //     email: "Mothi@paws.com",
+  //     phone: "9547568748",
+  //     Penalty: 0.0,
+  //   },
+  //   {
+  //     id: "1005",
+  //     name: "Tiger",
+  //     email: "Tiger@paws.com",
+  //     phone: "8465465464",
+  //     Penalty: 200.0,
+  //   },
+  // ];
 
   return (
     <div className="MIContainer ">
@@ -77,7 +77,7 @@ function Memberinfo() {
             setOpen(true);
           }}
         >
-          <IoMdAddCircle className="MIAddIcon" />
+          <IoMdAddCircle  className="MIAddIcon"/>
           &nbsp;Add Member
         </button>
       </div>
