@@ -13,6 +13,11 @@ async function getAllBooks()
     return data;
 }
 
+async function postMember(memberInfo)
+{
+    await axios.post(dbURL+'/users/',memberInfo);
+}
+
 async function getAllUsers()
 {
     const data = await apiCall('/users/');
@@ -24,5 +29,5 @@ export {
     apiCall , 
     getAllBooks ,
     getAllUsers ,
-
+    postMember
 }
