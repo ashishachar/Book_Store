@@ -3,6 +3,8 @@ import { getAllBooks } from "../utils/api-calls";
 import Navbar from "./Navbar";
 import { FaPlus } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import Header from "./Header";
+import { Link } from "react-router-dom";
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -41,8 +43,19 @@ function Books() {
   }, []);
 
   return (
-    <>
-      <Navbar />
+    <div className="container">
+      <Header></Header>
+      <div className="d-flex justify-content-center ">
+        <Navbar />
+        <Link to={"/books/add"} className="w-50 mt-3 ">
+          <div className="d-flex flex-row align-items-center ">
+            <h5 className="mx-3">Add Book</h5>
+            <div className="btn btn-primary">
+              <FaPlus></FaPlus>
+            </div>
+          </div>
+        </Link>
+      </div>
       <br />
       <div className="container">
         <div className="card-deck mb-3 text-center row">
@@ -67,13 +80,13 @@ function Books() {
                     </div>
                     <div className="d-flex w-100 mt-2">
                       <div className="w-75 d-flex  text-start">
-                        {book.categories.length <= 2 ? (
+                        {book.categories.length <= 1 ? (
                           <>
                             {book.categories.map((cattempitr, cattempind) => {
                               return (
                                 <div
                                   key={cattempind}
-                                  className="btn btn-primary p-1 "
+                                  className="btn btn-success p-1 "
                                   style={{ marginRight: "0.5rem" }}
                                 >
                                   {cattempitr.categ}
@@ -85,19 +98,19 @@ function Books() {
                         ) : (
                           <>
                             <div
-                              className="btn btn-primary p-1 "
+                              className="btn btn-success p-1 "
                               style={{ marginRight: "0.5rem" }}
                             >
                               {book.categories[0].categ}
                             </div>
-                            <div
+                            {/* <div
                               className="btn btn-primary p-1"
                               style={{ marginRight: "0.5rem" }}
                             >
                               {book.categories[1].categ}
-                            </div>
+                            </div> */}
                             <div
-                              className="btn btn-primary p-1"
+                              className="btn btn-success  p-1"
                               style={{ marginRight: "0.5rem" }}
                             >
                               <FaPlus />
@@ -118,7 +131,7 @@ function Books() {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

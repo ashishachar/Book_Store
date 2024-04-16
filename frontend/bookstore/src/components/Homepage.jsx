@@ -1,12 +1,8 @@
 import { ImBooks } from "react-icons/im";
-import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 // import React from 'react';
 function Homepage() {
-
-
-  
-  
   return (
     <div className="home container">
       <header>
@@ -68,7 +64,7 @@ function Homepage() {
                       <p className="card-text text-start">
                         <b>Members</b>
                         <br />
-                        Show all members scubscribed
+                        Show all members{" "}
                       </p>
                       <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">

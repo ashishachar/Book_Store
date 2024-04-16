@@ -1,9 +1,10 @@
 // import React from 'react'
-
+import Header from './Header';
 function UserUpdate() {
   return (
     <div className="container">
-      <h3 className="bg-dark m-0 p-3 text-white rounded border">
+      <Header />
+      <h3 className="bg-dark m-0 mt-2 p-3 text-white rounded border">
         Add new Member
       </h3>
       <br />
