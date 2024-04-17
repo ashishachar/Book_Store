@@ -1,25 +1,35 @@
 /* eslint-disable react/prop-types */
-// import React from 'react'
+import {useState,useEffect} from 'react'
 import UserImg from "../assets/user.png";
 // import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import { useParams } from 'react-router-dom';
+import { getMemberByID } from "../utils/api-calls";
 
 function UserInfo() {
+  const { infoId } = useParams();
+  const [member,setMember] = useState([]);
+  useEffect(() => {
+  const dataFetch = async () => {
+    let mdata = await getMemberByID(infoId);
+    setMember(mdata);
+    };
+        dataFetch();
+      }, []);
   
-
-  return (
+    return (
     <>
       <div className="container bg-dark border rounded">
         <div className="row">
           <div className="col-md-8">
             <div className=" bg-white text-dark rounded m-4">
               <br />
-              <h3 className="text-start mx-2 border-bottom pb-2">Rancho</h3>
+              <h3 className="text-start mx-2 border-bottom pb-2">{member.name}</h3>
               
-              <h5 className="text-start mx-2">ID : #00001</h5>
-              <h5 className="text-start mx-2">Email : Rancho@gmail.com</h5>
-              <h5 className="text-start mx-2">Phone number : 737843738478</h5>
-              <h5 className="text-start mx-2">Penalty : 25.00</h5>
+              <h5 className="text-start mx-2">ID : #0000{member.id}</h5>
+              <h5 className="text-start mx-2">Email : {member.email_id}</h5>
+              <h5 className="text-start mx-2">Phone number : {member.contact_no}</h5>
+              <h5 className="text-start mx-2">Penalty : {member.penalty}</h5>
 
               <br />
             </div>

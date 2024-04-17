@@ -6,9 +6,8 @@ import { MdDelete } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
-  const dataToPass = {id : {infoId}, name : {infoName}, email:{infoEmail}, phone:{infoPhone}, penalty:{infoPenalty}};
   return (
-    <Link to={'/members/info'+dataToPass}>
+    <Link to={'/members/info/'+infoId}>
       
     <div className='MBContainer '>
         <div className='MBId'>{infoId}</div>
