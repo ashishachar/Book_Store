@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 // import React from 'react'
 import UserImg from "../assets/user.png";
 // import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
 function UserInfo() {
+  
+
   return (
     <>
       <div className="container bg-dark border rounded">
@@ -13,10 +16,10 @@ function UserInfo() {
               <br />
               <h3 className="text-start mx-2 border-bottom pb-2">Rancho</h3>
               
-              <h5 className="text-start mx-2">ID : #123745</h5>
-              <h5 className="text-start mx-2">Email : rancho@paws.com</h5>
-              <h5 className="text-start mx-2">Phone number : 987654321</h5>
-              <h5 className="text-start mx-2">Penalty : 355</h5>
+              <h5 className="text-start mx-2">ID : #00001</h5>
+              <h5 className="text-start mx-2">Email : Rancho@gmail.com</h5>
+              <h5 className="text-start mx-2">Phone number : 737843738478</h5>
+              <h5 className="text-start mx-2">Penalty : 25.00</h5>
 
               <br />
             </div>
