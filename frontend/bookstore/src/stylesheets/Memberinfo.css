@@ -63,3 +63,9 @@
 .MIDelete{
     width: 10%;
 }
+
+.MIEmpty{
+    color: black;
+    font-size: larger;
+    margin: 50px;
+}

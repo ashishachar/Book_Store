@@ -10,14 +10,14 @@ function UserInfo() {
   const { infoId } = useParams();
   const [member,setMember] = useState([]);
   useEffect(() => {
-  const dataFetch = async () => {
-    let mdata = await getMemberByID(infoId);
-    setMember(mdata);
+    const dataFetch = async () => {
+      let mdata = await getMemberByID(infoId);
+      setMember(mdata);
     };
-        dataFetch();
-      }, []);
+    dataFetch();
+  }, []);
   
-    return (
+  return (
     <>
       <div className="container bg-dark border rounded">
         <div className="row">

@@ -53,8 +53,8 @@ function Transactioninfo() {
                             infoStatus={transac.status}
                         />
                     )
-                })
-                : null
+                }):
+                <><div className='TIEmpty'>No transactions yet!</div></>
 
             }
         </div>

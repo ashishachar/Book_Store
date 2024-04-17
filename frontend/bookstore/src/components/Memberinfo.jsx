@@ -108,18 +108,21 @@ function Memberinfo() {
 
             } */}
 
-        {users.map((member, index) => {
-          return (
-            <Member
-              key={index}
-              infoId={String(member.id).padStart(5, '0')}
-              infoName={member.name}
-              infoEmail={member.email_id}
-              infoPhone={member.contact_no}
-              infoPenalty={member.penalty}
-            />
-          );
-        })}
+        {users ? 
+          users.map((member, index) => {
+            return (
+              <Member
+                key={index}
+                infoId={String(member.id).padStart(5, '0')}
+                infoName={member.name}
+                infoEmail={member.email_id}
+                infoPhone={member.contact_no}
+                infoPenalty={member.penalty}
+              />
+            );
+          }):
+          <><div className='MIEmpty'>No members yet!</div></>
+        }
       </div>
       {open && <Addmember closeModal={setOpen} />}
     </div>
