@@ -25,9 +25,32 @@ async function getAllUsers()
     return data;
 }
 
+async function getTransactions()
+{
+    const data = await apiCall('/transactions/');
+    // console.log(data);
+    return data;
+}
+
+async function getMemberByID(memID) {
+    const data = await axios.get(dbURL + "/users/" + memID);
+    // console.log(data.data);
+    return data.data;
+}
+
+async function getBookByID(bookID) {
+    console.log(bookID);
+    const data = await axios.get(dbURL + "/books/" + bookID + "/info");
+    console.log(data.data);
+    return data.data;
+}
+
 export {
     apiCall , 
     getAllBooks ,
     getAllUsers ,
-    postMember
+    postMember ,
+    getTransactions ,
+    getMemberByID ,
+    getBookByID
 }
