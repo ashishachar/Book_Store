@@ -1,14 +1,13 @@
 from bookstoreapp.models import Logins,BookDetails,Category,Members,Transaction
-from bookstoreapp.serializers import LoginsSerializer, BookDetailsSerializer,CategorySerializer,MembersSerializer, TransactionSerializer,TransactionBorrowSerializer
+from bookstoreapp.serializers import LoginsSerializer, BookDetailsSerializer,CategorySerializer,MembersSerializer, TransactionSerializer,TransactionBorrowSerializer,AddBookDetailsSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.contrib import messages
+import datetime
 
 @api_view(['POST'])
 def admin_validation(request):
-    # print(f"user from request:{request.data['user']}")
-    # print(f"password from request:{request.data['password']}")
     try:
         admin_check = Logins.objects.get(user_name = request.data['user'])
     except Logins.DoesNotExist:
@@ -16,7 +15,6 @@ def admin_validation(request):
     if request.method == 'POST':
         if admin_check:
             if request.data['password'] == admin_check.user_password:
-                # print(f'password from db: {admin_check.user_password}')
                 return Response({'state': True}, status=status.HTTP_200_OK)
             return Response({'state': False}, status=status.HTTP_401_UNAUTHORIZED)
         
@@ -28,11 +26,16 @@ def books_list(request):
         return Response(serialize.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
-        serialize = BookDetailsSerializer(data=request.data)
-        if serialize.is_valid():
-            serialize.save()
-            return Response(serialize.data, status=status.HTTP_201_CREATED)
-        return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
+        if BookDetails.objects.filter(title=request.data['title']).exists():
+            book_count=BookDetails.objects.get(title=request.data['title']).no_of_copies
+            BookDetails.objects.filter(title=request.data['title']).update(no_of_copies=book_count+request.data['no_of_copies'])
+            return Response("Successfully updated a Book",status=status.HTTP_200_OK)
+        else:
+            serialize = AddBookDetailsSerializer(data=request.data)
+            if serialize.is_valid():
+                serialize.save()
+                return Response(serialize.data, status=status.HTTP_201_CREATED)
+            return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
             
 @api_view(['GET'])
 def book_details(request,pk):
@@ -78,8 +81,8 @@ def book_transaction(request,book_id):
         serialize = TransactionSerializer(book)
         return Response(serialize.data)
     
-@api_view(['POST', 'PATCH'])
-def book_borrow_return(request):
+@api_view(['POST'])
+def book_borrow(request):
     if request.method == 'POST':
         if BookDetails.objects.filter(id = request.data['book']).exists():
             available = BookDetails.objects.get(id = request.data['book']).no_of_copies
@@ -93,3 +96,24 @@ def book_borrow_return(request):
                 return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
             return Response('Book Not Available',status=status.HTTP_404_NOT_FOUND)
         return Response('Book does not exist in the store',status=status.HTTP_404_NOT_FOUND)
+    
+@api_view(['PATCH'])
+def book_return(request):
+    if request.method == 'PATCH':
+        print(request.data)
+        if Transaction.objects.filter(id=request.data['id']).exists():
+            trans = Transaction.objects.filter(id=request.data['id'])
+            trans.update(return_date=datetime.date.today())
+            trans.update(status=True)
+            book_no=Transaction.objects.get(id=request.data['id']).book.pk
+            available = BookDetails.objects.get(id=book_no).no_of_copies
+            BookDetails.objects.filter(id=book_no).update(no_of_copies=available+1)
+            return Response('Book Return successfully', status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def transaction_list(request):
+    if request.method == 'GET':
+        trans = Transaction.objects.all()
+        serialize = TransactionSerializer(trans, many=True)
+        return Response(serialize.data, status=status.HTTP_200_OK)

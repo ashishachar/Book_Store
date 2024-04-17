@@ -11,7 +11,9 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         #fields = '__all__'
-        fields = ['categ']
+    
+    def to_representation(self, obj):
+        return obj.categ
 
 class BookDetailsSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(read_only=True, many=True)
@@ -37,6 +39,11 @@ class TransactionBorrowSerializer(serializers.ModelSerializer):
         model = Transaction
         fields = ['memb', 'book', 'borrow_date', 'return_date', 'status']
 
-   
+class AddBookDetailsSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(read_only=True, many=True)
+    class Meta:
+        model = BookDetails
+        # fields = '__all__'
+        fields = ['author', 'title', 'no_of_copies', "categories"]
 
 
