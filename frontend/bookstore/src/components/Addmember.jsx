@@ -6,13 +6,10 @@ import { postMember } from '../utils/api-calls';
 function Addmember({ closeModal }) {
 
   const [success,setSuccess] = useState(false);
+  const [membInfo,setMembInfo] = useState({name : "", email_id : "", contact_no : "", penalty : 0.00})
 
   async function addMember(){
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    let memberInfo = {"name" : name, "email_id" : email, "contact_no" : phone, "penalty" : "0.00"};
-    await postMember(memberInfo).then(()=>{
+    await postMember(membInfo).then(()=>{
       setSuccess(true);
     });
   }
@@ -20,6 +17,18 @@ function Addmember({ closeModal }) {
   function refreshPage(){
     window.location.reload();
   }
+
+  const handleChangeName = (e) => {
+    setMembInfo({...membInfo, name : e.target.value});
+  };
+
+  const handleChangeEmail = (e) => {
+    setMembInfo({...membInfo, email_id : e.target.value});
+  };
+
+  const handleChangePhone = (e) => {
+    setMembInfo({...membInfo, contact_no : e.target.value});
+  };
 
   return (
     <div className='AMBackground'>
@@ -30,9 +39,9 @@ function Addmember({ closeModal }) {
                 <button className="AMClose" onClick={()=>{closeModal(false)}}>X</button><br/>
               </div>
               <div className='AMTitle'><h4>Add Member</h4></div>
-              <input className="AMName" type="text" id="name" placeholder="Enter Member Name"></input><br/>
-              <input className="AMName" type="text" id="email" placeholder="Enter Email Id"></input><br/>
-              <input className="AMName" type="text" id="phone" placeholder="Enter Phone No."></input><br/>
+              <input className="AMName" type="text" onChange= {handleChangeName} placeholder="Enter Member Name"></input><br/>
+              <input className="AMName" type="text" onChange= {handleChangeEmail} placeholder="Enter Email Id"></input><br/>
+              <input className="AMName" type="text" onChange= {handleChangePhone} placeholder="Enter Phone No."></input><br/>
               <button className="AMAdd" onClick={addMember}>Add</button>
               <button className="AMAdd" onClick={()=>{closeModal(false)}}>Cancel</button>
             </>:
