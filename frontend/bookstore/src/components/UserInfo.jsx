@@ -1,28 +1,22 @@
-// import React from 'react'
+/* eslint-disable react/prop-types */
+import {useState,useEffect} from 'react'
 import UserImg from "../assets/user.png";
 // import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import { getMemberByID } from "../utils/api-calls";
-import Header from "./Header";
-function UserInfo() {
-  const d = useParams()["memID"];
 
-  const [userData, setUserData] = useState({
-    id: 0,
-    name: "Rancho",
-    email_id: "test@gmail.com",
-    contact_no: 9695948721,
-    penalty: "00.00",
-  });
+function UserInfo() {
+  const { infoId } = useParams();
+  const [member,setMember] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      const temp = await getMemberByID(d);
-      setUserData(temp);
+    const dataFetch = async () => {
+      let mdata = await getMemberByID(infoId);
+      setMember(mdata);
     };
-    fetchData();
+    dataFetch();
   }, []);
+  
 
   return (
     <div className="container">
@@ -32,18 +26,12 @@ function UserInfo() {
           <div className="col-md-8">
             <div className=" bg-white text-dark rounded m-4">
               <br />
-              <h3 className="text-start mx-2 border-bottom pb-2">
-                {userData.name}
-              </h3>
-
-              <h5 className="text-start mx-2">
-                ID : #{String(userData.id).padStart(5, "0")}
-              </h5>
-              <h5 className="text-start mx-2">Email : {userData.email_id}</h5>
-              <h5 className="text-start mx-2">
-                Phone number : {userData.contact_no}
-              </h5>
-              <h5 className="text-start mx-2">Penalty : ${userData.penalty}</h5>
+              <h3 className="text-start mx-2 border-bottom pb-2">{member.name}</h3>
+              
+              <h5 className="text-start mx-2">ID : #0000{member.id}</h5>
+              <h5 className="text-start mx-2">Email : {member.email_id}</h5>
+              <h5 className="text-start mx-2">Phone number : {member.contact_no}</h5>
+              <h5 className="text-start mx-2">Penalty : {member.penalty}</h5>
 
               <br />
             </div>

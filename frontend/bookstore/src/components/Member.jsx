@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import "../stylesheets/Member.css";
 import { MdDelete } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
   return (
-    <Link to={'/members/'+Number(infoId).toString()}>
+    <Link to={'/members/info/'+infoId}>
+
       
     <div className='MBContainer '>
         <div className='MBId'>{infoId}</div>
@@ -15,7 +16,7 @@ function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
         <div className='MBChars'>{infoEmail}</div>
         <div className='MBNumbers'>{infoPhone}</div>
         <div className='MBNumbers'>Rs.{infoPenalty}</div>
-        <div className='MBDelete'><MdDelete /></div>
+        <div className='MBDelete'><MdDelete id={infoId}/></div>
     </div>
     </Link>
   )
