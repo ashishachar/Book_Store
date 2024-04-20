@@ -1,1 +1,4 @@
 *.pyc
+__pycache__/*
+Backend/bookinventory/bookstoreapp/migrations
+Backend/bookinventory/bookstoreapp/migrations/*

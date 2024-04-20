@@ -65,7 +65,7 @@ function Books() {
                 <div className="m-1 box-shadow card p-0">
                   <div className="card-header">
                     <h4 className="my-0 font-weight-normal">
-                      #{String(book.id).padStart(5, "0")}
+                      #{String(book.book_id).padStart(5, "0")}
                     </h4>
                   </div>
                   <div className="card-body">
@@ -89,7 +89,7 @@ function Books() {
                                   className="btn btn-success p-1 "
                                   style={{ marginRight: "0.5rem" }}
                                 >
-                                  {cattempitr.categ}
+                                  {cattempitr}
                                 </div>
                               );
                             })}
@@ -101,7 +101,7 @@ function Books() {
                               className="btn btn-success p-1 "
                               style={{ marginRight: "0.5rem" }}
                             >
-                              {book.categories[0].categ}
+                              {book.categories[0]}
                             </div>
                             {/* <div
                               className="btn btn-primary p-1"

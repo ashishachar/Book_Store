@@ -19,7 +19,7 @@ class BookDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookDetails
         # fields = '__all__'
-        fields = ['author', 'title', 'no_of_copies', "categories"]
+        fields = ['book_id','author', 'title', 'no_of_copies', "categories"]
 
 class MembersSerializer(serializers.ModelSerializer):
     class Meta:
