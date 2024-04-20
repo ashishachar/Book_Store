@@ -1,5 +1,6 @@
 // import React from 'react'
 import Select from "react-select";
+import Header from './Header';
 
 function BookUpdate() {
   const genres = [
@@ -16,7 +17,8 @@ function BookUpdate() {
 
   return (
     <div className="container">
-      <h3 className="bg-dark m-0 p-3 text-white rounded border">
+      <Header />
+      <h3 className="bg-dark m-0 mt-2 p-3 text-white rounded border">
         Add new Book
       </h3>
       <br />

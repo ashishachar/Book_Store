@@ -17,9 +17,11 @@ function UserInfo() {
     dataFetch();
   }, []);
   
+
   return (
-    <>
-      <div className="container bg-dark border rounded">
+    <div className="container">
+      <Header />
+      <div className="container bg-dark border rounded mt-3">
         <div className="row">
           <div className="col-md-8">
             <div className=" bg-white text-dark rounded m-4">
@@ -38,7 +40,7 @@ function UserInfo() {
             <img
               src={UserImg}
               alt=""
-              style={{ width: "50%" }}
+              style={{ width: "100%" }}
               className="img-fluid card-img"
             />
           </div>
@@ -49,45 +51,79 @@ function UserInfo() {
           <h4>All Transactions</h4>
           <div className="UserInfoTable border border-dark rounded pb-3">
             <div className="UserInfoRow d-flex align-items-center font-weight-bold border-bottom py-2">
-              <div style={{width : "60%"}} className=""><b>Book Title</b></div>
-              <div style={{width : "20%"}} className=""><b>Borrow Date</b></div>
-              <div style={{width : "10%"}} className=""><b>Return Date</b></div>
-              <div style={{width : "10%"}} className=""><b>Status</b></div>
-            </div>
-            <div className="UserInfoRow d-flex align-items-center font-weight-bold">
-              <div style={{width : "60%"}} className=" text-start px-2">Harry Potter and Prisoner of Azkaban</div>
-              <div style={{width : "20%"}} className="  px-2">12-Apr-2024</div>
-              <div style={{width : "10%"}} className="  px-2">-</div>
-              <div style={{width : "10%"}} className="  px-2">
-                  <MdClose></MdClose>
+              <div style={{ width: "60%" }} className="">
+                <b>Book Title</b>
+              </div>
+              <div style={{ width: "20%" }} className="">
+                <b>Borrow Date</b>
+              </div>
+              <div style={{ width: "10%" }} className="">
+                <b>Return Date</b>
+              </div>
+              <div style={{ width: "10%" }} className="">
+                <b>Status</b>
               </div>
             </div>
             <div className="UserInfoRow d-flex align-items-center font-weight-bold">
-              <div style={{width : "60%"}} className=" text-start px-2">Harry Potter and Prisoner of Azkaban</div>
-              <div style={{width : "20%"}} className="  px-2">12-Apr-2024</div>
-              <div style={{width : "10%"}} className="  px-2">-</div>
-              <div style={{width : "10%"}} className="  px-2">
-                  <MdClose></MdClose>
+              <div style={{ width: "60%" }} className=" text-start px-2">
+                Harry Potter and Prisoner of Azkaban
               </div>
-            </div><div className="UserInfoRow d-flex align-items-center font-weight-bold">
-              <div style={{width : "60%"}} className=" text-start px-2">Harry Potter and Prisoner of Azkaban</div>
-              <div style={{width : "20%"}} className="  px-2">12-Apr-2024</div>
-              <div style={{width : "10%"}} className="  px-2">-</div>
-              <div style={{width : "10%"}} className="  px-2">
-                  <MdClose></MdClose>
+              <div style={{ width: "20%" }} className="  px-2">
+                12-Apr-2024
               </div>
-            </div><div className="UserInfoRow d-flex align-items-center font-weight-bold">
-              <div style={{width : "60%"}} className=" text-start px-2">Harry Potter and Prisoner of Azkaban</div>
-              <div style={{width : "20%"}} className="  px-2">12-Apr-2024</div>
-              <div style={{width : "10%"}} className="  px-2">-</div>
-              <div style={{width : "10%"}} className="  px-2">
-                  <MdClose></MdClose>
+              <div style={{ width: "10%" }} className="  px-2">
+                -
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                <MdClose></MdClose>
+              </div>
+            </div>
+            <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+              <div style={{ width: "60%" }} className=" text-start px-2">
+                Harry Potter and Prisoner of Azkaban
+              </div>
+              <div style={{ width: "20%" }} className="  px-2">
+                12-Apr-2024
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                -
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                <MdClose></MdClose>
+              </div>
+            </div>
+            <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+              <div style={{ width: "60%" }} className=" text-start px-2">
+                Harry Potter and Prisoner of Azkaban
+              </div>
+              <div style={{ width: "20%" }} className="  px-2">
+                12-Apr-2024
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                -
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                <MdClose></MdClose>
+              </div>
+            </div>
+            <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+              <div style={{ width: "60%" }} className=" text-start px-2">
+                Harry Potter and Prisoner of Azkaban
+              </div>
+              <div style={{ width: "20%" }} className="  px-2">
+                12-Apr-2024
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                -
+              </div>
+              <div style={{ width: "10%" }} className="  px-2">
+                <MdClose></MdClose>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

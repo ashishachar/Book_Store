@@ -1,17 +1,17 @@
-import axios from 'axios'
-const dbURL = 'http://127.0.0.1:8000'
+import axios from "axios";
+const dbURL = "http://127.0.0.1:8000";
 
-async function apiCall(reqUrl){
-    const data = await axios.get(dbURL+reqUrl);
-    // console.log(data.data);
-    return data.data;
+async function apiCall(reqUrl) {
+  const data = await axios.get(dbURL + reqUrl);
+  // console.log(data.data);
+  return data.data;
 }
 
-async function getAllBooks()
-{
-    const data = await apiCall('/books/all');
-    return data;
+async function getAllBooks() {
+  const data = await apiCall("/books/all");
+  return data;
 }
+
 
 async function postMember(memberInfo)
 {
@@ -44,6 +44,10 @@ async function getBookByID(bookID) {
     console.log(data.data);
     return data.data;
 }
+async function postTransaction(postInfo) {
+  console.log("Posting\n", postInfo);
+  await axios.post(dbURL + "/book/borrow", postInfo);
+}
 
 export {
     apiCall , 
@@ -52,5 +56,10 @@ export {
     postMember ,
     getTransactions ,
     getMemberByID ,
-    getBookByID
+    getBookByID ,
+    postTransaction
 }
+
+
+
+
