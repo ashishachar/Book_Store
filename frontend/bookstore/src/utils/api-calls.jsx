@@ -49,6 +49,11 @@ async function postTransaction(postInfo) {
   await axios.post(dbURL + "/book/borrow", postInfo);
 }
 
+async function postBook(bookInfo) {
+  console.log('Posting\n',bookInfo);
+  // await axios.post(dbURL + "/book/add", bookInfo);
+}
+
 export {
     apiCall , 
     getAllBooks ,
@@ -57,7 +62,8 @@ export {
     getTransactions ,
     getMemberByID ,
     getBookByID ,
-    postTransaction
+    postTransaction ,
+    postBook
 }
 
 

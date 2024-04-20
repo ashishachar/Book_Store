@@ -23,7 +23,7 @@ function Homepage() {
           <div className="album py-5 bg-light">
             <div className="container">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <div className="card mb-4 box-shadow">
                     <div className="card-body">
                       <p className="card-text text-start">
@@ -58,7 +58,7 @@ function Homepage() {
                   </div>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <div className="card mb-4 box-shadow">
                     <div className="card-body">
                       <p className="card-text text-start">
