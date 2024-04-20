@@ -2,7 +2,7 @@
 import { FaSearch } from "react-icons/fa";
 function Navbar() {
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center mt-3 w-50">
       <div className="form-outline d-flex ">
         <input type="search" id="form1" className="form-control" />
       </div>

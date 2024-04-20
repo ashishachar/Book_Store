@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
   return (
-    <Link to={'/members/info'}>
+    <Link to={'/members/'+Number(infoId).toString()}>
       
     <div className='MBContainer '>
         <div className='MBId'>{infoId}</div>

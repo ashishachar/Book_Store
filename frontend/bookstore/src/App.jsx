@@ -8,6 +8,7 @@ import Books from './components/Books';
 import BookUpdate from './components/BookUpdate';
 import UserInfo from'./components/UserInfo';
 import UserUpdate from "./components/UserUpdate";
+import TransactionUpdate from "./components/TransactionUpdate";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/transactions/",
     element: <Transactioninfo />,
+  },
+  {
+    path: "/transactions/add",
+    element: <TransactionUpdate />,
   },
   {
     path: "/login/",
@@ -35,7 +40,7 @@ const router = createBrowserRouter([
     element : <BookUpdate />
   },
   {
-    path : '/members/info/' ,
+    path : '/members/:memID/' ,
     element : <UserInfo/>
   } ,
   {
