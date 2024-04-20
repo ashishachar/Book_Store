@@ -26,9 +26,10 @@ def books_list(request):
         return Response(serialize.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
-        if BookDetails.objects.filter(title=request.data['title']).exists():
-            book_count=BookDetails.objects.get(title=request.data['title']).no_of_copies
-            BookDetails.objects.filter(title=request.data['title']).update(no_of_copies=book_count+request.data['no_of_copies'])
+        if BookDetails.objects.filter(title=request.data['title'], author=request.data['author']).exists():
+            book_obj = BookDetails.objects.filter(title=request.data['title'], author=request.data['author'])
+            book_count=book_obj.all().get().no_of_copies
+            BookDetails.objects.filter(title=request.data['title'], author=request.data['author']).update(no_of_copies=book_count+request.data['no_of_copies'])
             return Response("Successfully updated a Book",status=status.HTTP_200_OK)
         else:
             serialize = AddBookDetailsSerializer(data=request.data)
@@ -81,13 +82,23 @@ def book_transaction(request,book_id):
         serialize = TransactionSerializer(book)
         return Response(serialize.data)
     
+@api_view(['GET'])
+def user_transaction(request,user_id):
+    try:
+        user = Transaction.objects.get(memb_id=user_id)
+    except Transaction.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':     
+        serialize = TransactionSerializer(user)
+        return Response(serialize.data)
+    
 @api_view(['POST'])
 def book_borrow(request):
     if request.method == 'POST':
-        if BookDetails.objects.filter(id = request.data['book']).exists():
-            available = BookDetails.objects.get(id = request.data['book']).no_of_copies
+        if BookDetails.objects.filter(book_id = request.data['book']).exists():
+            available = BookDetails.objects.get(book_id = request.data['book']).no_of_copies
             if available > 0:
-                BookDetails.objects.filter(id = request.data['book']).update(no_of_copies=available-1)
+                BookDetails.objects.filter(book_id = request.data['book']).update(no_of_copies=available-1)
                 re_data = request.data.update({'status': 'False'})
                 serialize = TransactionBorrowSerializer(data=request.data)
                 if serialize.is_valid():
@@ -99,15 +110,19 @@ def book_borrow(request):
     
 @api_view(['PATCH'])
 def book_return(request):
+    try:
+        bk_id = BookDetails.objects.get(title=request.data['book_title']).book_id
+        me_id = Members.objects.get(name=request.data['user_name']).pk
+        print(bk_id,me_id)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'PATCH':
-        print(request.data)
-        if Transaction.objects.filter(id=request.data['id']).exists():
-            trans = Transaction.objects.filter(id=request.data['id'])
+        if Transaction.objects.filter(book=bk_id, memb=me_id).exists():
+            trans = Transaction.objects.filter(book=bk_id, memb=me_id)
             trans.update(return_date=datetime.date.today())
             trans.update(status=True)
-            book_no=Transaction.objects.get(id=request.data['id']).book.pk
-            available = BookDetails.objects.get(id=book_no).no_of_copies
-            BookDetails.objects.filter(id=book_no).update(no_of_copies=available+1)
+            available = BookDetails.objects.get(book_id=bk_id).no_of_copies
+            BookDetails.objects.filter(book_id=bk_id).update(no_of_copies=available+1)
             return Response('Book Return successfully', status=status.HTTP_200_OK)
         return Response(status=status.HTTP_404_NOT_FOUND)
 

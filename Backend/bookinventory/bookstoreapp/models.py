@@ -6,6 +6,7 @@ class Logins(models.Model):
     user_password = models.CharField(max_length=12) 
 
 class BookDetails(models.Model):
+    book_id = models.IntegerField(primary_key=True)
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=250)
     no_of_copies = models.IntegerField()
@@ -15,6 +16,7 @@ class Category(models.Model):
     categ = models.CharField(max_length=30)
 
 class Members(models.Model):
+    # id =models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     email_id = models.EmailField(max_length=254)
     contact_no = models.BigIntegerField()
