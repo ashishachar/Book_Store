@@ -132,3 +132,4 @@ def transaction_list(request):
         trans = Transaction.objects.all()
         serialize = TransactionSerializer(trans, many=True)
         return Response(serialize.data, status=status.HTTP_200_OK)
+    
