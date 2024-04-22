@@ -1,0 +1,49 @@
+.DMBackground{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(50,50,50,0.89);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+
+.DMModal{
+    justify-content: center;
+    margin: 10px;
+    background-color: rgb(10,10,10);
+    color: white;
+    padding: 10px 40px 20px 40px;
+    border-radius: 2.5rem;
+    width:fit-content;
+}
+
+.DMBtnConatiner{
+    display: flex;
+    justify-content: right;
+}
+
+.DMClose{
+    background-color: rgb(10,10,10);
+    padding: 5px;
+}
+
+
+
+.DMDelete{
+    background-color: brown;
+    color: white;
+    height: 35px;
+    margin: 20px;
+    padding: 5px;
+    width: 90px;
+    font-size: 1.1rem;
+    font-size: medium;
+    text-align: center;
+}
+
+.DMValid{
+    color: rgb(223, 48, 48);
+    margin : 10px;
+}

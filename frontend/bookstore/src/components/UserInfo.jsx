@@ -5,10 +5,15 @@ import UserImg from "../assets/user.png";
 import { MdClose } from "react-icons/md";
 import { useParams } from 'react-router-dom';
 import { getMemberByID } from "../utils/api-calls";
+import Updatemember from './Updatemember';
+import Deletemember from './Deletemember';
+
 
 function UserInfo() {
   const { infoId } = useParams();
   const [member,setMember] = useState([]);
+  const [openEdit, setOpen] = useState(false);
+  const [openDelete,setDelete] = useState(false);
   useEffect(() => {
     const dataFetch = async () => {
       let mdata = await getMemberByID(infoId);
@@ -16,7 +21,6 @@ function UserInfo() {
     };
     dataFetch();
   }, []);
-  
 
   return (
     <div className="container">
@@ -31,6 +35,7 @@ function UserInfo() {
               <h5 className="text-start mx-2">Email : {member.email_id}</h5>
               <h5 className="text-start mx-2">Phone number : {member.contact_no}</h5>
               <h5 className="text-start mx-2">Penalty : {member.penalty}</h5>
+              
 
               <br />
             </div>
@@ -42,7 +47,17 @@ function UserInfo() {
               style={{ width: "100%" }}
               className="img-fluid card-img"
             />
+            <div className='d-flex justify-content-center'>
+              <button className="bg-white text-dark m-1 w-50" onClick={()=>{setOpen(true)}}>
+                Edit
+              </button>   
+              <button className="bg-white text-dark m-1 w-50" onClick={()=>{setDelete(true)}}>
+                Delete
+              </button>
+            </div>
+            
           </div>
+          
         </div>
       </div>
       <div className="mt-3">
@@ -122,6 +137,9 @@ function UserInfo() {
           </div>
         </div>
       </div>
+      {openEdit && <Updatemember closeModal={setOpen} membData={member}/>}
+      {openDelete && <Deletemember closeModal={setDelete} membData={member}/>}
+
     </div>
   );
 }

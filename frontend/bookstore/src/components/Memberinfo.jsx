@@ -37,7 +37,6 @@ function Memberinfo() {
         <div className="MIChars">Email</div>
         <div className="MINumbers">Phone No.</div>
         <div className="MINumbers">Penalty</div>
-        <div className="MIDelete">Delete</div>
       </div>
       <div className="MIList">
         {users ? 

@@ -11,21 +11,21 @@ function Addmember({ closeModal }) {
   async function addMember(){
 
     if(membInfo.name == ""){
-      setValid("Enter Member Name")
+      setValid("Enter Member Name");
     }else if(membInfo.email_id == ""){
-      setValid("Enter Email Id")
+      setValid("Enter Email Id");
     }else if(membInfo.contact_no == ""){
-      setValid("Enter Phone No.")
+      setValid("Enter Phone No.");
     }else if(!/^[A-Za-z][A-Za-z]{3,12}$/i.test(membInfo.name)){
-      setValid("Invalid Member Name")
+      setValid("Invalid Member Name");
     }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(membInfo.email_id)){
-      setValid("Invalid Email Id")
+      setValid("Invalid Email Id");
     }else if(!/^(?:(?:\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/i.test(membInfo.contact_no)){
-      setValid("Invalid Phone No.")
+      setValid("Invalid Phone No.");
     }else{
       await postMember(membInfo).then(()=>{
         setSuccess(true);
-        setValid("")
+        setValid("");
       });
     }
     
