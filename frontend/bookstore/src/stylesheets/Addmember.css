@@ -55,3 +55,8 @@
     font-size: medium;
     text-align: center;
 }
+
+.AMValid{
+    color: rgb(223, 48, 48);
+    margin : 10px;
+}
