@@ -20,7 +20,7 @@ function Addmember({ closeModal }) {
       setValid("Invalid Member Name")
     }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(membInfo.email_id)){
       setValid("Invalid Email Id")
-    }else if(!/^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[789]\d{9}$/i.test(membInfo.contact_no)){
+    }else if(!/^(?:(?:\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/i.test(membInfo.contact_no)){
       setValid("Invalid Phone No.")
     }else{
       await postMember(membInfo).then(()=>{
