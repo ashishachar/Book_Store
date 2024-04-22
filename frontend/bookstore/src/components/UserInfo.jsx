@@ -20,7 +20,6 @@ function UserInfo() {
 
   return (
     <div className="container">
-      <Header />
       <div className="container bg-dark border rounded mt-3">
         <div className="row">
           <div className="col-md-8">
