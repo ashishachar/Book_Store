@@ -9,8 +9,13 @@ import BookUpdate from './components/BookUpdate';
 import UserInfo from'./components/UserInfo';
 import UserUpdate from "./components/UserUpdate";
 import TransactionUpdate from "./components/TransactionUpdate";
+import Bookinfo from "./components/Bookinfo";
 
 const router = createBrowserRouter([
+  {
+    path: "/book/info/:bookID",
+    element: <Bookinfo />,
+  },
   {
     path: "/members/",
     element: <Memberinfo />,

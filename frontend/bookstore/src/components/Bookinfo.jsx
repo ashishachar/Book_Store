@@ -1,33 +1,33 @@
 /* eslint-disable react/prop-types */
 import {useState,useEffect} from 'react'
-import UserImg from "../assets/user.png";
+import BookImg from "../assets/book.png";
 // import { FaCheck } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
-import { getMemberByID, getTransactionsByMembId } from "../utils/api-calls";
-import Updatemember from './Updatemember';
-import Deletemember from './Deletemember';
+import { getBookByID, getTransactionsByBookId } from "../utils/api-calls";
+// import Updatemember from './Updatemember';
+import Deletebook from './Deletebook';
 import Transaction from './Transaction';
 
 
-function UserInfo() {
-  const { infoId } = useParams();
-  const [member,setMember] = useState([]);
+function Bookinfo() {
+  const { bookID } = useParams();
+  const [book,setBook] = useState([]);
   const [transacs, setTransac] = useState([]);
-  const [openEdit, setOpen] = useState(false);
+//   const [openEdit, setOpen] = useState(false);
   const [openDelete,setDelete] = useState(false);
 
   useEffect(() => {
     const dataFetch = async () => {
-      let mdata = await getMemberByID(infoId);
-      setMember(mdata);
+      let bdata = await getBookByID(bookID);
+      setBook(bdata);
     };
     dataFetch().then(async()=>{
-      console.log("----",member);
-      let tdata = await getTransactionsByMembId(infoId);
+    //   console.log("----",member);
+      let tdata = await getTransactionsByBookId(bookID);
       setTransac(tdata);
     });
   }, []);
-  // console.log(">>>>",transacs);
+//   console.log(">>>>",transacs);
 
   // console.log("dbhdgf",member);
   return (
@@ -37,12 +37,12 @@ function UserInfo() {
           <div className="col-md-8">
             <div className=" bg-white text-dark rounded m-4">
               <br />
-              <h3 className="text-start mx-2 border-bottom pb-2">{member.name}</h3>
+              <h3 className="text-start mx-2 border-bottom pb-2">{book.title}</h3>
               
-              <h5 className="text-start mx-2">ID : #0000{member.id}</h5>
-              <h5 className="text-start mx-2">Email : {member.email_id}</h5>
-              <h5 className="text-start mx-2">Phone number : {member.contact_no}</h5>
-              <h5 className="text-start mx-2">Penalty : {member.penalty}</h5>
+              <h5 className="text-start mx-2">ID : #0000{book.book_id}</h5>
+              <h5 className="text-start mx-2">Author : {book.author}</h5>
+              <h5 className="text-start mx-2">Number of copies : {book.no_of_copies}</h5>
+              <h5 className="text-start mx-2">Genre : {book.categories}</h5>
               
 
               <br />
@@ -50,15 +50,15 @@ function UserInfo() {
           </div>
           <div className="col-md-4">
             <img
-              src={UserImg}
+              src={BookImg}
               alt=""
               style={{ width: "100%" }}
               className="img-fluid card-img"
             />
             <div className='d-flex justify-content-center'>
-              <button className="bg-white text-dark m-1 w-50" onClick={()=>{setOpen(true)}}>
+              {/* <button className="bg-white text-dark m-1 w-50" onClick={()=>{setOpen(true)}}>
                 Edit
-              </button>   
+              </button>    */}
               <button className="bg-white text-dark m-1 w-50" onClick={()=>{setDelete(true)}}>
                 Delete
               </button>
@@ -71,7 +71,7 @@ function UserInfo() {
       <div className="mt-3">
         <div className="container ">
           <h4>All Transactions</h4>
-          <div className="TIList">
+          <div>
             {
                 transacs ? 
                 Object.values(transacs).map((transac,index)=>{
@@ -87,17 +87,17 @@ function UserInfo() {
                         />
                     )
                 }):
-                <><div className='TIEmpty'>No transactions yet!</div></>
+                <><div>No transactions yet!</div></>
 
             }
             </div>
         </div>
       </div>
-      {openEdit && <Updatemember closeModal={setOpen} membData={member}/>}
-      {openDelete && <Deletemember closeModal={setDelete} membData={member}/>}
+      {/* {openEdit && <Updatemember closeModal={setOpen} membData={member}/>} */}
+      {openDelete && <Deletebook closeModal={setDelete} membData={book}/>}
 
     </div>
   );
 }
 
-export default UserInfo;
+export default Bookinfo;

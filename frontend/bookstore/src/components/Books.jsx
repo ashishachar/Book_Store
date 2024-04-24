@@ -33,7 +33,7 @@ function Books() {
     const dataFetch = async () => {
       try {
         let data = await getAllBooks();
-        setBooks(data ? data : dummyData);
+        setBooks(data);
       } catch (error) {
         console.log(error.message);
         setBooks(dummyData);
@@ -62,6 +62,7 @@ function Books() {
           {books.map((book, bookID) => {
             return (
               <div key={bookID} className="p-1 col-md-4 ">
+                <Link to= {'/book/info/'+book.book_id} >
                 <div className="m-1 box-shadow card p-0">
                   <div className="card-header">
                     <h4 className="my-0 font-weight-normal">
@@ -126,6 +127,7 @@ function Books() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </div>
             );
           })}

@@ -39,10 +39,18 @@ async function getMemberByID(memID) {
 }
 
 async function getBookByID(bookID) {
-    console.log(bookID);
     const data = await axios.get(dbURL + "/books/" + bookID + "/info");
-    console.log(data.data);
     return data.data;
+}
+
+async function getTransactionsByMembId(membId){
+  const data = await axios.get(dbURL + "/user/" + membId+ "/transactions");
+  return data.data;
+}
+
+async function getTransactionsByBookId(bookId){
+  const data = await axios.get(dbURL + "/book/" + bookId+ "/transactions");
+  return data.data;
 }
 
 async function postTransaction(postInfo) {
@@ -74,7 +82,9 @@ export {
     postTransaction ,
     postBook ,
     patchMemberById ,
-    deleteMemberById
+    deleteMemberById ,
+    getTransactionsByMembId ,
+    getTransactionsByBookId
 }
 
 
