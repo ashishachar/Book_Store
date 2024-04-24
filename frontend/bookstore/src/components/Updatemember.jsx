@@ -2,11 +2,20 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import "../stylesheets/Updatemember.css";
+import { patchMemberById } from '../utils/api-calls';
 
 function Updatemember({closeModal,membData}) {
     const [success,setSuccess] = useState(false);
     const [valid, setValid] = useState("");
-    const [membInfo,setMembInfo] = useState(membData);
+    const [membInfo,setMembInfo] = useState({
+      name : membData.name , 
+      email_id : membData.email_id, 
+      contact_no : membData.contact_no, 
+      penalty: membData.penalty
+    });
+
+    console.log(membInfo);
+
     async function addMember(){
         if(membInfo.name == ""){
             setValid("Enter Member Name");
@@ -25,8 +34,10 @@ function Updatemember({closeModal,membData}) {
         }else if(!/^(0|[1-9]\d*)(\.\d+)?$/i.test(membInfo.penalty)){
             setValid("Invalid Penalty");
         }else{
+          await patchMemberById(membData.id, membInfo).then(()=>{
             setSuccess(true);
-            console.log("Edited",membInfo);
+            setValid("");
+          });
         }
       
     }
@@ -37,7 +48,7 @@ function Updatemember({closeModal,membData}) {
   
     function clearModal(){
       setValid("");
-      setMembInfo({name : "", email_id : "", contact_no : "",});
+      setMembInfo({name : "", email_id : "", contact_no : "", penalty:0.00});
     }
   
     const handleChangeName = (e) => {

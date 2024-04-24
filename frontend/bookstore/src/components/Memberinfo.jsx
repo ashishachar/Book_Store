@@ -5,6 +5,9 @@ import { IoMdAddCircle } from "react-icons/io";
 import Member from "./Member";
 import Addmember from "./Addmember";
 import { getAllUsers } from "../utils/api-calls";
+import { FaSearch } from "react-icons/fa";
+import Select from "react-select";
+
 function Memberinfo() {
   const [open, setOpen] = useState(false);
   const [users, setUsers] = useState([]);
@@ -16,6 +19,13 @@ function Memberinfo() {
     };
     dataFetch();
   }, []);
+  
+  const options = [
+    { value: 'lower first', label: 'Lower first' },
+    { value: 'higher first', label: 'Higher first' },
+    { value: 'name (a-z)', label: 'Name (A-Z)' },
+    { value: 'name (z-a)', label: 'Name (Z-A)'}
+  ]
 
   return (
     <div className="MIContainer ">
@@ -23,6 +33,27 @@ function Memberinfo() {
         <h2>Members&#39; Info</h2>
       </div>
       <div className="MIAddContainer">
+        <div className="MISearchContainer d-flex">
+          <input className="MISearch" type="text" placeholder="Enter id or Name or Email or Phone No."></input>
+          <button className="MIAddBtn ms-1"> <FaSearch/></button>
+        </div>
+        <Select 
+          className="MISelect" 
+          options={options} 
+          placeholder = "Sort" 
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderWidth:2,
+              borderRadius: 17,
+              borderColor: 'black',
+            }),
+            option: (provided, state) =>({
+              ...provided,
+              backgroundColor: state.isSelected ? 'black' :  'white' 
+            })
+          }}
+        />
         <button
           className="MIAddBtn"
           onClick={()=>{setOpen(true);}}

@@ -44,6 +44,7 @@ async function getBookByID(bookID) {
     console.log(data.data);
     return data.data;
 }
+
 async function postTransaction(postInfo) {
   console.log("Posting\n", postInfo);
   await axios.post(dbURL + "/book/borrow", postInfo);
@@ -52,6 +53,10 @@ async function postTransaction(postInfo) {
 async function postBook(bookInfo) {
   console.log('Posting\n',bookInfo);
   // await axios.post(dbURL + "/book/add", bookInfo);
+}
+
+async function patchMemberById(membId, memberInfo){
+  await axios.patch(dbURL + "/users/" + membId, memberInfo)
 }
 
 export {
@@ -63,7 +68,8 @@ export {
     getMemberByID ,
     getBookByID ,
     postTransaction ,
-    postBook
+    postBook ,
+    patchMemberById
 }
 
 
