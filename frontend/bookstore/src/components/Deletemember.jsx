@@ -3,13 +3,15 @@
 import React, {useState} from 'react';
 import "../stylesheets/Deletemember.css";
 import { Link } from 'react-router-dom';
+import { deleteMemberById } from '../utils/api-calls';
 
 function Deletemember({ closeModal, membData}) {
     const [success,setSuccess] = useState(false);
 
     async function deleteMember(){
-        console.log(membData);
+      await deleteMemberById(membData.id).then(()=>{
         setSuccess(true);
+      });
     }
 
     function refreshPage(){

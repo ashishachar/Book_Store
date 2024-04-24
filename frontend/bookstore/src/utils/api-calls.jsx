@@ -59,6 +59,10 @@ async function patchMemberById(membId, memberInfo){
   await axios.patch(dbURL + "/users/" + membId, memberInfo)
 }
 
+async function deleteMemberById(membId){
+  await axios.delete(dbURL + "/users/" + membId)
+}
+
 export {
     apiCall , 
     getAllBooks ,
@@ -69,7 +73,8 @@ export {
     getBookByID ,
     postTransaction ,
     postBook ,
-    patchMemberById
+    patchMemberById ,
+    deleteMemberById
 }
 
 
