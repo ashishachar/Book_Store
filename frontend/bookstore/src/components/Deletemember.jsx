@@ -25,12 +25,12 @@ function Deletemember({ closeModal, membData}) {
             <button className="DMClose" onClick={()=>{closeModal(false)}}>X</button><br/>
           </div>
           
-          <br/><div>Are you sure you want to delete the member {membData.name} ?</div>
+          <br/><div><h5>Are you sure you want to delete the member {membData.name} ?</h5></div>
           <button className="DMDelete" onClick={deleteMember}>Delete</button>
           <button className="DMDelete" onClick={refreshPage}>Cancel</button>
         </>:
         <>
-          <br/><div>Member deleted successfully!</div><br />
+          <br/><div><h5>Member deleted successfully!</h5></div><br />
           <Link to="/members/"><button className='DMDelete'>OK</button></Link>
         </>
         }

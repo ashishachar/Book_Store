@@ -64,7 +64,7 @@ function Updatemember({closeModal,membData}) {
               <div className='UMBtnConatiner'>
                 <button className="UMClose" onClick={()=>{closeModal(false)}}>X</button><br/>
               </div>
-              <div className='UMTitle'><h4>Edit Member</h4></div>
+              <div className='UMTitle'><h3>Edit Member</h3></div>
               <input className="UMName" value={membInfo.name} type="text" onChange= {handleChangeName} placeholder="Enter Member Name"></input><br/>
               <input className="UMName" value={membInfo.email_id} type="text" onChange= {handleChangeEmail} placeholder="Enter Email Id"></input><br/>
               <input className="UMName" value={membInfo.contact_no} type="text" onChange= {handleChangePhone} placeholder="Enter Phone No."></input><br/>
@@ -74,7 +74,7 @@ function Updatemember({closeModal,membData}) {
               <div className="UMValid">{valid}</div>
             </>:
             <>
-              <br/><div>Member Edited successfully!</div><br />
+              <br/><div><h5>Member Edited successfully!</h5></div><br />
               <button className='UMAdd' onClick={refreshPage}>OK</button>
             </>
             }

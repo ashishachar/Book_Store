@@ -59,7 +59,7 @@ function Addmember({ closeModal }) {
               <div className='AMBtnConatiner'>
                 <button className="AMClose" onClick={()=>{closeModal(false)}}>X</button><br/>
               </div>
-              <div className='AMTitle'><h4>Add Member</h4></div>
+              <div className='AMTitle'><h3>Add Member</h3></div>
               <input className="AMName" value={membInfo.name} type="text" onChange= {handleChangeName} placeholder="Enter Member Name"></input><br/>
               <input className="AMName" value={membInfo.email_id} type="text" onChange= {handleChangeEmail} placeholder="Enter Email Id"></input><br/>
               <input className="AMName" value={membInfo.contact_no} type="text" onChange= {handleChangePhone} placeholder="Enter Phone No."></input><br/>
@@ -68,7 +68,7 @@ function Addmember({ closeModal }) {
               <div className="AMValid">{valid}</div>
             </>:
             <>
-              <br/><div>Member added successfully!</div><br />
+              <br/><div><h5>Member added successfully!</h5></div><br />
               <button className='AMAdd' onClick={refreshPage}>OK</button>
             </>
             }
