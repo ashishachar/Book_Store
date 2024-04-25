@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../stylesheets/Deletebook.css";
 
-function Deletebook({closeModal,book}) {
+function Deletebook({closeModal,bookData}) {
     const [success,setSuccess] = useState(false);
 
     async function deleteBook(){
@@ -26,7 +26,7 @@ function Deletebook({closeModal,book}) {
             <button className="DBClose" onClick={()=>{closeModal(false)}}>X</button><br/>
           </div>
           
-          <br/><div><h5>Are you sure you want to delete the book ?</h5></div>
+          <br/><div><h5>Are you sure you want to delete the book {bookData.title}?</h5></div>
           <button className="DBDelete" onClick={deleteBook}>Delete</button>
           <button className="DBDelete" onClick={refreshPage}>Cancel</button>
         </>:

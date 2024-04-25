@@ -4,7 +4,7 @@ import BookImg from "../assets/book.png";
 // import { FaCheck } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
 import { getBookByID, getTransactionsByBookId } from "../utils/api-calls";
-// import Updatemember from './Updatemember';
+import Updatebook from './Updatebook';
 import Deletebook from './Deletebook';
 import Transaction from './Transaction';
 
@@ -13,7 +13,7 @@ function Bookinfo() {
   const { bookID } = useParams();
   const [book,setBook] = useState([]);
   const [transacs, setTransac] = useState([]);
-//   const [openEdit, setOpen] = useState(false);
+  const [openEdit, setOpen] = useState(false);
   const [openDelete,setDelete] = useState(false);
 
   useEffect(() => {
@@ -56,9 +56,9 @@ function Bookinfo() {
               className="img-fluid card-img"
             />
             <div className='d-flex justify-content-center'>
-              {/* <button className="bg-white text-dark m-1 w-50" onClick={()=>{setOpen(true)}}>
+              <button className="bg-white text-dark m-1 w-50" onClick={()=>{setOpen(true)}}>
                 Edit
-              </button>    */}
+              </button>   
               <button className="bg-white text-dark m-1 w-50" onClick={()=>{setDelete(true)}}>
                 Delete
               </button>
@@ -93,8 +93,8 @@ function Bookinfo() {
             </div>
         </div>
       </div>
-      {/* {openEdit && <Updatemember closeModal={setOpen} membData={member}/>} */}
-      {openDelete && <Deletebook closeModal={setDelete} membData={book}/>}
+      {openEdit && <Updatebook closeModal={setOpen} bookData={book}/>}
+      {openDelete && <Deletebook closeModal={setDelete} bookData={book}/>}
 
     </div>
   );
