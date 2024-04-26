@@ -1,8 +1,11 @@
 import { ImBooks } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom';
 // import React from 'react';
 function Homepage() {
+
+  const navigate = useNavigate();
   return (
     <div className="home container">
       <header>
@@ -36,8 +39,9 @@ function Homepage() {
                           <button
                             type="button"
                             className="btn btn-sm btn-outline-secondary"
+                            onClick={()=>{navigate('/books/add')}}
                           >
-                            Option1
+                            Add
                           </button>
                           <button
                             type="button"
@@ -71,8 +75,9 @@ function Homepage() {
                           <button
                             type="button"
                             className="btn btn-sm btn-outline-secondary"
+                            onClick={()=>{navigate('/members/add')}}
                           >
-                            Option1
+                            Add
                           </button>
                           <button
                             type="button"

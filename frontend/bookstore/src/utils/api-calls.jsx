@@ -72,6 +72,8 @@ async function deleteMemberById(membId){
 }
 
 export {
+    axios , 
+    dbURL ,
     apiCall , 
     getAllBooks ,
     getAllUsers ,

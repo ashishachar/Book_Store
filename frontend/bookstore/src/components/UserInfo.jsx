@@ -9,6 +9,7 @@ import Deletemember from './Deletemember';
 import Transaction from './Transaction';
 
 
+
 function UserInfo() {
   const { infoId } = useParams();
   const [member,setMember] = useState([]);
@@ -69,8 +70,9 @@ function UserInfo() {
         </div>
       </div>
       <div className="mt-3">
-        <div className="container ">
+        <div className="container p-0">
           <h4>All Transactions</h4>
+
           <div className="TIList">
             {
                 transacs ? 
@@ -90,6 +92,78 @@ function UserInfo() {
                 <><div className='TIEmpty'>No transactions yet!</div></>
 
             }
+
+//           <div className="UserInfoTable border border-dark rounded pb-3">
+//             <div className="UserInfoRow d-flex align-items-center font-weight-bold border-bottom py-2">
+//               <div style={{ width: "60%" }} className="">
+//                 <b>Book Title</b>
+//               </div>
+//               <div style={{ width: "15%" }} className="">
+//                 <b>Borrow Date</b>
+//               </div>
+//               <div style={{ width: "15%" }} className="">
+//                 <b>Return Date</b>
+//               </div>
+//               <div style={{ width: "10%" }} className="">
+//                 <b>Status</b>
+//               </div>
+//             </div>
+//             <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+//               <div style={{ width: "60%" }} className=" text-start px-2">
+//                 Harry Potter and Prisoner of Azkaban
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 12-Apr-2024
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 -
+//               </div>
+//               <div style={{ width: "10%" }} className="  px-2">
+//                 <MdClose></MdClose>
+//               </div>
+//             </div>
+//             <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+//               <div style={{ width: "60%" }} className=" text-start px-2">
+//                 Harry Potter and Prisoner of Azkaban
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 12-Apr-2024
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 -
+//               </div>
+//               <div style={{ width: "10%" }} className="  px-2">
+//                 <MdClose></MdClose>
+//               </div>
+//             </div>
+//             <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+//               <div style={{ width: "60%" }} className=" text-start px-2">
+//                 Harry Potter and Prisoner of Azkaban
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 12-Apr-2024
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 -
+//               </div>
+//               <div style={{ width: "10%" }} className="  px-2">
+//                 <MdClose></MdClose>
+//               </div>
+//             </div>
+//             <div className="UserInfoRow d-flex align-items-center font-weight-bold">
+//               <div style={{ width: "60%" }} className=" text-start px-2">
+//                 Harry Potter and Prisoner of Azkaban
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 12-Apr-2024
+//               </div>
+//               <div style={{ width: "15%" }} className="  px-2">
+//                 -
+//               </div>
+//               <div style={{ width: "10%" }} className="  px-2">
+//                 <MdClose></MdClose>
+//               </div>
+
             </div>
         </div>
       </div>
