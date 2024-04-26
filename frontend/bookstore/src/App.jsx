@@ -4,11 +4,12 @@ import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Memberinfo from "./components/Memberinfo";
 import Transactioninfo from "./components/Transactioninfo";
-import Books from './components/Books';
+// import Books from './components/Books';
 import BookUpdate from './components/BookUpdate';
 import UserInfo from'./components/UserInfo';
 import UserUpdate from "./components/UserUpdate";
 import TransactionUpdate from "./components/TransactionUpdate";
+import BookList from "./components/BookList";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/books/",
-    element: <Books />,
+    element: <BookList />,
   },
   {
     path : '/books/add',

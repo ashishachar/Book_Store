@@ -20,6 +20,7 @@ function TransactionUpdate() {
 
   const onChangeBook = (e) => {
     console.log(e);
+    // console.log(books , info );
     setInfo({ ...info, book: e });
   };
 
@@ -67,11 +68,11 @@ function TransactionUpdate() {
     };
     const fetchAllBooks = async () => {
       const books = await getAllBooks();
-      // console.log(members);
+      // console.log(books);
       let bookState = [];
       books.forEach((book) => {
         // console.log(mem.id , mem.name);
-        bookState.push({ value: book.id, label: book.title });
+        bookState.push({ value: book.book_id, label: book.title });
       });
       // console.log(bookState, books);
       setBooks(bookState);

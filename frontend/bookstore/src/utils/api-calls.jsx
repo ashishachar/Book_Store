@@ -55,6 +55,8 @@ async function postBook(bookInfo) {
 }
 
 export {
+    axios , 
+    dbURL ,
     apiCall , 
     getAllBooks ,
     getAllUsers ,

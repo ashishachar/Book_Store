@@ -24,7 +24,7 @@ class BookDetailsSerializer(serializers.ModelSerializer):
 class MembersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Members
-        fields = ['name', 'email_id', 'contact_no', 'penalty']
+        fields = ['id','name', 'email_id', 'contact_no', 'penalty']
 
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:

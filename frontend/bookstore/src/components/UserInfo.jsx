@@ -5,6 +5,7 @@ import UserImg from "../assets/user.png";
 import { MdClose } from "react-icons/md";
 import { useParams } from 'react-router-dom';
 import { getMemberByID } from "../utils/api-calls";
+import Header from './Header';
 
 function UserInfo() {
   const { infoId } = useParams();
@@ -47,17 +48,17 @@ function UserInfo() {
         </div>
       </div>
       <div className="mt-3">
-        <div className="container ">
+        <div className="container p-0">
           <h4>All Transactions</h4>
           <div className="UserInfoTable border border-dark rounded pb-3">
             <div className="UserInfoRow d-flex align-items-center font-weight-bold border-bottom py-2">
               <div style={{ width: "60%" }} className="">
                 <b>Book Title</b>
               </div>
-              <div style={{ width: "20%" }} className="">
+              <div style={{ width: "15%" }} className="">
                 <b>Borrow Date</b>
               </div>
-              <div style={{ width: "10%" }} className="">
+              <div style={{ width: "15%" }} className="">
                 <b>Return Date</b>
               </div>
               <div style={{ width: "10%" }} className="">
@@ -68,10 +69,10 @@ function UserInfo() {
               <div style={{ width: "60%" }} className=" text-start px-2">
                 Harry Potter and Prisoner of Azkaban
               </div>
-              <div style={{ width: "20%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 12-Apr-2024
               </div>
-              <div style={{ width: "10%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 -
               </div>
               <div style={{ width: "10%" }} className="  px-2">
@@ -82,10 +83,10 @@ function UserInfo() {
               <div style={{ width: "60%" }} className=" text-start px-2">
                 Harry Potter and Prisoner of Azkaban
               </div>
-              <div style={{ width: "20%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 12-Apr-2024
               </div>
-              <div style={{ width: "10%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 -
               </div>
               <div style={{ width: "10%" }} className="  px-2">
@@ -96,10 +97,10 @@ function UserInfo() {
               <div style={{ width: "60%" }} className=" text-start px-2">
                 Harry Potter and Prisoner of Azkaban
               </div>
-              <div style={{ width: "20%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 12-Apr-2024
               </div>
-              <div style={{ width: "10%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 -
               </div>
               <div style={{ width: "10%" }} className="  px-2">
@@ -110,10 +111,10 @@ function UserInfo() {
               <div style={{ width: "60%" }} className=" text-start px-2">
                 Harry Potter and Prisoner of Azkaban
               </div>
-              <div style={{ width: "20%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 12-Apr-2024
               </div>
-              <div style={{ width: "10%" }} className="  px-2">
+              <div style={{ width: "15%" }} className="  px-2">
                 -
               </div>
               <div style={{ width: "10%" }} className="  px-2">
