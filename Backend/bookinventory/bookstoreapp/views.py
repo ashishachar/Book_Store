@@ -62,7 +62,7 @@ def users_list(request):
             return Response(serialize.data, status=status.HTTP_201_CREATED)
         return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
     
-@api_view(['GET'])
+@api_view(['GET','PATCH','DELETE'])
 def user_details(request,pk):
     try:
         user = Members.objects.get(pk=pk)
@@ -71,6 +71,17 @@ def user_details(request,pk):
     if request.method == 'GET':     
         serialize = MembersSerializer(user)
         return Response(serialize.data)
+    
+    elif request.method == 'PATCH':
+        serialize = MembersSerializer(user, data=request.data, partial=True)
+        if serialize.is_valid():
+            serialize.save()
+            return Response(serialize.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
 @api_view(['GET'])
 def book_transaction(request,book_id):
@@ -132,3 +143,4 @@ def transaction_list(request):
         trans = Transaction.objects.all()
         serialize = TransactionSerializer(trans, many=True)
         return Response(serialize.data, status=status.HTTP_200_OK)
+    

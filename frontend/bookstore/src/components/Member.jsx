@@ -16,7 +16,6 @@ function Member({infoId, infoName, infoEmail, infoPhone, infoPenalty}) {
         <div className='MBChars'>{infoEmail}</div>
         <div className='MBNumbers'>{infoPhone}</div>
         <div className='MBNumbers'>Rs.{infoPenalty}</div>
-        <div className='MBDelete'><MdDelete id={infoId}/></div>
     </div>
     </Link>
   )
