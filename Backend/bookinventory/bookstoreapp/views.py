@@ -38,7 +38,7 @@ def books_list(request):
                 return Response(serialize.data, status=status.HTTP_201_CREATED)
             return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
             
-@api_view(['GET'])
+@api_view(['GET','DELETE'])
 def book_details(request,pk):
     try:
         book = BookDetails.objects.get(pk=pk)
@@ -47,6 +47,10 @@ def book_details(request,pk):
     if request.method == 'GET':     
         serialize = BookDetailsSerializer(book)
         return Response(serialize.data)
+    
+    elif request.method == 'DELETE':
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
 @api_view(['GET','POST'])
 def users_list(request):
