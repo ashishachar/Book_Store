@@ -76,12 +76,12 @@ function Bookinfo() {
             <div className="mt-3">
               <h4>All Transactions</h4>
               <div className="TIListHeader">
-              <div className='TIChars'>Member Name</div>
-              <div className='TIChars'>Book Title</div>
-              <div className='TIDates'>Borrowed on</div>
-              <div className='TIDates'>Returned on</div>
-              <div className='TIStatus'>Status</div>
-            </div>
+                <div className='TIChars'>Member Name</div>
+                <div className='TIChars'>Book Title</div>
+                <div className='TIDates'>Borrowed on</div>
+                <div className='TIDates'>Returned on</div>
+                <div className='TIStatus'>Status</div>
+              </div>
             <div>
               {
                 Object.values(transacs).map((transac,index)=>{

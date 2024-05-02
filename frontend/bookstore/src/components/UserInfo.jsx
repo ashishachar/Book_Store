@@ -23,7 +23,7 @@ function UserInfo() {
       setMember(mdata);
     };
     dataFetch().then(async()=>{
-      console.log("----",member);
+      // console.log("----",member);
       let tdata = await getTransactionsByMembId(infoId);
       setTransac(tdata);
     });
@@ -75,6 +75,13 @@ function UserInfo() {
           <div className="mt-3">
             <div className="container p-0">
               <h4>All Transactions</h4>
+              <div className="TIListHeader">
+                <div className='TIChars'>Member Name</div>
+                <div className='TIChars'>Book Title</div>
+                <div className='TIDates'>Borrowed on</div>
+                <div className='TIDates'>Returned on</div>
+                <div className='TIStatus'>Status</div>
+              </div>
               <div className="TIList">
                 {
                     Object.values(transacs).map((transac,index)=>{
