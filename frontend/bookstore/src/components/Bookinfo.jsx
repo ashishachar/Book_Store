@@ -68,30 +68,42 @@ function Bookinfo() {
           
         </div>
       </div>
-      <div className="mt-3">
+      
         <div className="container ">
-          <h4>All Transactions</h4>
-          <div>
-            {
-                transacs ? 
-                Object.values(transacs).map((transac,index)=>{
-                    // console.log(">>>>",transac);
-                    return (
-                        <Transaction
-                            key={index} 
-                            infoMemb={transac.memb} 
-                            infoBook={transac.book} 
-                            infoBorrow={transac.borrow_date} 
-                            infoReturned={transac.return_date} 
-                            infoStatus={transac.status}
-                        />
-                    )
-                }):
-                <><div>No transactions yet!</div></>
-
-            }
+        {
+          transacs.length != 0 ? 
+          <>
+            <div className="mt-3">
+              <h4>All Transactions</h4>
+              <div className="TIListHeader">
+              <div className='TIChars'>Member Name</div>
+              <div className='TIChars'>Book Title</div>
+              <div className='TIDates'>Borrowed on</div>
+              <div className='TIDates'>Returned on</div>
+              <div className='TIStatus'>Status</div>
             </div>
-        </div>
+            <div>
+              {
+                Object.values(transacs).map((transac,index)=>{
+                  // console.log(">>>>",transac);
+                  return (
+                      <Transaction
+                          key={index} 
+                          infoMemb={transac.memb} 
+                          infoBook={transac.book} 
+                          infoBorrow={transac.borrow_date} 
+                          infoReturned={transac.return_date} 
+                          infoStatus={transac.status}
+                      />
+                  )
+                })
+              }
+            </div>
+          </div>
+          </>:
+          <><div className='h4 mt-5'>No Transactions yet!</div></>
+        }
+          
       </div>
       {openEdit && <Updatebook closeModal={setOpen} bookData={book}/>}
       {openDelete && <Deletebook closeModal={setDelete} bookData={book}/>}

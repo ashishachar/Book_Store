@@ -69,29 +69,35 @@ function UserInfo() {
           
         </div>
       </div>
-      <div className="mt-3">
-        <div className="container p-0">
-          <h4>All Transactions</h4>
-
-          <div className="TIList">
-            {
-                transacs ? 
-                Object.values(transacs).map((transac,index)=>{
-                    // console.log(">>>>",transac);
-                    return (
-                        <Transaction
-                            key={index} 
-                            infoMemb={transac.memb} 
-                            infoBook={transac.book} 
-                            infoBorrow={transac.borrow_date} 
-                            infoReturned={transac.return_date} 
-                            infoStatus={transac.status}
-                        />
-                    )
-                }):
-                <><div className='TIEmpty'>No transactions yet!</div></>
-
-            }
+      {
+        transacs.length != 0 ?
+        <>
+          <div className="mt-3">
+            <div className="container p-0">
+              <h4>All Transactions</h4>
+              <div className="TIList">
+                {
+                    Object.values(transacs).map((transac,index)=>{
+                        // console.log(">>>>",transac);
+                        return (
+                            <Transaction
+                                key={index} 
+                                infoMemb={transac.memb} 
+                                infoBook={transac.book} 
+                                infoBorrow={transac.borrow_date} 
+                                infoReturned={transac.return_date} 
+                                infoStatus={transac.status}
+                            />
+                        )
+                    })
+                }
+              </div>
+            </div>
+          </div>
+        </>:
+        <><div className='h4 mt-5'>No Transactions yet!</div></>
+      }
+      
 
 {/* //           <div className="UserInfoTable border border-dark rounded pb-3">
 //             <div className="UserInfoRow d-flex align-items-center font-weight-bold border-bottom py-2">
@@ -164,9 +170,7 @@ function UserInfo() {
 //                 <MdClose></MdClose>
 //               </div> */}
 
-            </div>
-        </div>
-      </div>
+            
       {openEdit && <Updatemember closeModal={setOpen} membData={member}/>}
       {openDelete && <Deletemember closeModal={setDelete} membData={member}/>}
 
