@@ -71,6 +71,10 @@ async function deleteMemberById(membId){
   await axios.delete(dbURL + "/users/" + membId)
 }
 
+async function deleteBookById(bookId){
+  await axios.delete( dbURL + "/books/" + bookId + "/info")
+}
+
 export {
     axios , 
     dbURL ,
@@ -86,7 +90,8 @@ export {
     patchMemberById ,
     deleteMemberById ,
     getTransactionsByMembId ,
-    getTransactionsByBookId
+    getTransactionsByBookId ,
+    deleteBookById
 }
 
 

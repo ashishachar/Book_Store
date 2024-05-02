@@ -165,7 +165,7 @@ function BookList() {
           {Object.keys(showList).map((listItem, listKey) => {
             // console.log(showList[listItem]);
             return (
-              <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey}>
+              <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey} >
               <tr  key={listKey} className=" table-light border">
                 
                 <th scope="row">
