@@ -93,7 +93,7 @@ function UserInfo() {
 
             }
 
-//           <div className="UserInfoTable border border-dark rounded pb-3">
+{/* //           <div className="UserInfoTable border border-dark rounded pb-3">
 //             <div className="UserInfoRow d-flex align-items-center font-weight-bold border-bottom py-2">
 //               <div style={{ width: "60%" }} className="">
 //                 <b>Book Title</b>
@@ -162,7 +162,7 @@ function UserInfo() {
 //               </div>
 //               <div style={{ width: "10%" }} className="  px-2">
 //                 <MdClose></MdClose>
-//               </div>
+//               </div> */}
 
             </div>
         </div>
