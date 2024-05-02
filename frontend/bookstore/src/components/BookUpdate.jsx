@@ -1,6 +1,7 @@
 // import React from 'react'
 import Select from "react-select";
 import Header from './Header';
+import {useState , useEffect} from 'react';
 
 function BookUpdate() {
   const genres = [
@@ -14,6 +15,38 @@ function BookUpdate() {
     { value: "Crime", label: "Crime" },
     { value: "Horror", label: "Horror" }
   ];
+  const [info , setInfo] = useState({title : '' , author : '' , no_of_copies:0 , categories : []});
+
+  useEffect(()=>{
+
+  },[]);
+
+  useEffect(()=>{
+    console.log(info);
+  },[info]);
+
+  const  onSubmitMeth = () =>{
+    console.log('New Book Added : ');
+    let res = info ;
+    let catTemp =[] ;
+    for(let category in res['categories'])
+    {
+      catTemp.push(res['categories'][category]['value']);
+    }
+    res['categories'] = catTemp ;
+    console.log(res);
+
+    //Call post metod to add new Book
+
+  }
+  
+  const onClearMeth =()=>{
+    console.log('Form Cleared : ');
+    setInfo(
+      {title : '' , author : '' , no_of_copies:0, categories : []}
+    )
+  }
+
 
   return (
     <div className="container">
@@ -34,6 +67,8 @@ function BookUpdate() {
               className="form-control mx-2"
               id="title"
               placeholder="Book Title here..."
+              value={info.title}
+              onChange={(e)=>{setInfo({...info , title : e.target.value})}}
             />
           </div>
         </div>
@@ -45,6 +80,8 @@ function BookUpdate() {
               className="form-control mx-2"
               id="author"
               placeholder="Author here..."
+              value={info.author}
+              onChange={(e)=>{setInfo({...info , author : e.target.value})}}
             />
           </div>
         </div>
@@ -58,6 +95,8 @@ function BookUpdate() {
               className="form-control mx-2"
               id="copies"
               placeholder="No of Copies..."
+              value={info.no_of_copies}
+              onChange={(e)=>{setInfo({...info , no_of_copies : e.target.value})}}
             />
           </div>
         </div>
@@ -74,13 +113,15 @@ function BookUpdate() {
               options={genres}
               className="basic-multi-select w-100 mx-2"
               classNamePrefix="select"
+              value={info.categories}
+              onChange={(e)=>{setInfo({...info , categories : e})}}
             />
           </div>
         </div>
         <div className="mb-3 d-flex justify-content-around">
             <div className="d-flex justify-content-around w-50 ">
-                <div className="btn btn-success ">Submit</div>
-                <div className="btn btn-warning">Clear</div>
+                <div className="btn btn-success" onClick={onSubmitMeth}>Submit</div>
+                <div className="btn btn-warning" onClick={onClearMeth}>Clear</div>
             </div>
         </div>
       </div>

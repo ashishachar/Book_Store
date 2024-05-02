@@ -33,7 +33,7 @@ function Books() {
     const dataFetch = async () => {
       try {
         let data = await getAllBooks();
-        setBooks(data ? data : dummyData);
+        setBooks(data);
       } catch (error) {
         console.log(error.message);
         setBooks(dummyData);
@@ -62,10 +62,11 @@ function Books() {
           {books.map((book, bookID) => {
             return (
               <div key={bookID} className="p-1 col-md-4 ">
+                <Link to= {'/book/info/'+book.book_id} >
                 <div className="m-1 box-shadow card p-0">
                   <div className="card-header">
                     <h4 className="my-0 font-weight-normal">
-                      #{String(book.id).padStart(5, "0")}
+                      #{String(book.book_id).padStart(5, "0")}
                     </h4>
                   </div>
                   <div className="card-body">
@@ -89,7 +90,7 @@ function Books() {
                                   className="btn btn-success p-1 "
                                   style={{ marginRight: "0.5rem" }}
                                 >
-                                  {cattempitr.categ}
+                                  {cattempitr}
                                 </div>
                               );
                             })}
@@ -101,7 +102,7 @@ function Books() {
                               className="btn btn-success p-1 "
                               style={{ marginRight: "0.5rem" }}
                             >
-                              {book.categories[0].categ}
+                              {book.categories[0]}
                             </div>
                             {/* <div
                               className="btn btn-primary p-1"
@@ -126,6 +127,7 @@ function Books() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </div>
             );
           })}
