@@ -21,8 +21,8 @@ function Memberinfo() {
   }, []);
   
   const options = [
-    { value: 'lower first', label: 'Lower first' },
-    { value: 'higher first', label: 'Higher first' },
+    { value: 'id lower first', label: 'ID (Lower first)' },
+    { value: 'id higher first', label: 'ID (Higher first)' },
     { value: 'name (a-z)', label: 'Name (A-Z)' },
     { value: 'name (z-a)', label: 'Name (Z-A)'}
   ]
