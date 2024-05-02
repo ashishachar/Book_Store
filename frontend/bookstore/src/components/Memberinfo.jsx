@@ -7,25 +7,46 @@ import Addmember from "./Addmember";
 import { getAllUsers } from "../utils/api-calls";
 import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
+import { options } from "../utils/options";
 
 function Memberinfo() {
   const [open, setOpen] = useState(false);
   const [users, setUsers] = useState([]);
+  const [showList, setShowList] = useState([]);
+  const [search, setSearch] = useState({
+    searchKey: "",
+    sortKey: options[0],
+  });
+
+  const updateSortMethod = (e) => {
+    setSearch({ ...search, sortKey: e });
+    if (options[0].value == e.value) {
+      let res = users.sort((a,b)=> a.id - b.id);
+      setShowList(res);
+    } else if (options[1].value == e.value) {
+      let res = users.sort((a,b)=> b.id-a.id);
+      setShowList(res);
+    } else if (options[2].value == e.value) {
+      let res = users.sort((a,b)=> a.name.localeCompare(b.name));
+      setShowList(res);
+    } else {
+      let res = users.sort((a,b)=> b.name.localeCompare(a.name));
+      setShowList(res);
+    }
+  };
 
   useEffect(() => {
     const dataFetch = async () => {
       let data = await getAllUsers();
       setUsers(data);
+      setShowList(data);
     };
     dataFetch();
   }, []);
-  
-  const options = [
-    { value: 'lower first', label: 'Lower first' },
-    { value: 'higher first', label: 'Higher first' },
-    { value: 'name (a-z)', label: 'Name (A-Z)' },
-    { value: 'name (z-a)', label: 'Name (Z-A)'}
-  ]
+
+  useEffect(() => {
+    // console.log(search);
+  }, [search]);
 
   return (
     <div className="MIContainer ">
@@ -34,31 +55,48 @@ function Memberinfo() {
       </div>
       <div className="MIAddContainer">
         <div className="MISearchContainer d-flex">
-          <input className="MISearch" type="text" placeholder="Enter id or Name or Email or Phone No."></input>
-          <button className="MIAddBtn ms-1"> <FaSearch/></button>
+          <input
+            value={search.searchKey}
+            onChange={(e) => {
+              setSearch({ ...search, searchKey: e.target.value });
+            }}
+            className="MISearch px-1"
+            type="text"
+            placeholder="Enter id or Name or Email or Phone No."
+          ></input>
+          <button className="MIAddBtn ms-1">
+            {" "}
+            <FaSearch />
+          </button>
         </div>
-        <Select 
-          className="MISelect" 
-          options={options} 
-          placeholder = "Sort" 
+        <Select
+          className="MISelect"
+          options={options}
+          placeholder="Sort"
+          value={search.sortKey}
+          onChange={(e) => {
+            updateSortMethod(e);
+          }}
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
-              borderWidth:2,
+              borderWidth: 2,
               borderRadius: 17,
-              borderColor: 'black',
+              borderColor: "black",
             }),
-            option: (provided, state) =>({
+            option: (provided, state) => ({
               ...provided,
-              backgroundColor: state.isSelected ? 'black' :  'white' 
-            })
+              backgroundColor: state.isSelected ? "black" : "white",
+            }),
           }}
         />
         <button
           className="MIAddBtn"
-          onClick={()=>{setOpen(true);}}
+          onClick={() => {
+            setOpen(true);
+          }}
         >
-          <IoMdAddCircle  className="MIAddIcon"/>
+          <IoMdAddCircle className="MIAddIcon" />
           &nbsp;Add Member
         </button>
       </div>
@@ -70,24 +108,26 @@ function Memberinfo() {
         <div className="MINumbers">Penalty</div>
       </div>
       <div className="MIList">
-        {users ? 
-          users.map((member, index) => {
+        {showList ? (
+          showList.map((member, index) => {
             return (
               <Member
                 key={index}
-                infoId={String(member.id).padStart(5, '0')}
+                infoId={String(member.id).padStart(5, "0")}
                 infoName={member.name}
                 infoEmail={member.email_id}
                 infoPhone={member.contact_no}
                 infoPenalty={member.penalty}
               />
             );
-          }):
-          <><div className='MIEmpty'>No members yet!</div></>
-        }
-
+          })
+        ) : (
+          <>
+            <div className="MIEmpty">No members yet!</div>
+          </>
+        )}
       </div>
-      {open && <Addmember closeModal={setOpen}/>}
+      {open && <Addmember closeModal={setOpen} />}
     </div>
   );
 }
