@@ -38,7 +38,7 @@ def books_list(request):
                 return Response(serialize.data, status=status.HTTP_201_CREATED)
             return Response(serialize.errors,status=status.HTTP_400_BAD_REQUEST)
             
-@api_view(['GET'])
+@api_view(['GET','DELETE'])
 def book_details(request,pk):
     try:
         book = BookDetails.objects.get(pk=pk)
@@ -47,6 +47,10 @@ def book_details(request,pk):
     if request.method == 'GET':     
         serialize = BookDetailsSerializer(book)
         return Response(serialize.data)
+    
+    elif request.method == 'DELETE':
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
 @api_view(['GET','POST'])
 def users_list(request):
@@ -86,22 +90,28 @@ def user_details(request,pk):
 @api_view(['GET'])
 def book_transaction(request,book_id):
     try:
-        book = Transaction.objects.get(book_id=book_id)
+        books = Transaction.objects.filter(book_id=book_id)
     except Transaction.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    if request.method == 'GET':     
-        serialize = TransactionSerializer(book)
-        return Response(serialize.data)
+    if request.method == 'GET':  
+        l = []   
+        for book in books:
+            serialize = TransactionSerializer(book)
+            l.append(serialize.data)
+        return Response(l)
     
 @api_view(['GET'])
 def user_transaction(request,user_id):
     try:
-        user = Transaction.objects.get(memb_id=user_id)
+        user = Transaction.objects.all().filter(memb_id=user_id)
     except Transaction.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    if request.method == 'GET':     
-        serialize = TransactionSerializer(user)
-        return Response(serialize.data)
+    if request.method == 'GET': 
+        l = list()    
+        for use in user:
+            serialize = TransactionSerializer(use)
+            l.append(serialize.data)
+        return Response(l)
     
 @api_view(['POST'])
 def book_borrow(request):
@@ -143,4 +153,4 @@ def transaction_list(request):
         trans = Transaction.objects.all()
         serialize = TransactionSerializer(trans, many=True)
         return Response(serialize.data, status=status.HTTP_200_OK)
-    
+
