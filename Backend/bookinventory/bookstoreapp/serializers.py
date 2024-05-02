@@ -13,7 +13,7 @@ class CategorySerializer(serializers.ModelSerializer):
     
     def to_representation(self, obj):
         return obj.categ
-
+    
 class BookDetailsSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(read_only=True, many=True)
     class Meta:
@@ -26,17 +26,28 @@ class MembersSerializer(serializers.ModelSerializer):
         model = Members
         fields = ['name', 'email_id', 'contact_no', 'penalty']
 
+
 class TransactionSerializer(serializers.ModelSerializer):
+    book_title = serializers.SerializerMethodField()
+    member_name = serializers.SerializerMethodField()
+    class Meta:
+        model = Transaction
+        fields = ['memb', 'book', 'borrow_date', 'return_date', 'status', 'book_title', 'member_name']
+
+    def get_book_title(self, obj):
+        book = obj.book
+        return book.title
+    
+    def get_member_name(self, obj):
+        memb = obj.memb
+        return memb.name
+
+
+class TransactionBorrowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['memb', 'book', 'borrow_date', 'return_date', 'status']
 
-class TransactionBorrowSerializer(serializers.ModelSerializer):
-    # return_date = serializers.ReadOnlyField(default=None)
-    # status = serializers.ReadOnlyField(default='False')
-    class Meta:
-        model = Transaction
-        fields = ['memb', 'book', 'borrow_date', 'return_date', 'status']
 
 class AddbookCategorySerializer(serializers.ModelSerializer):
     class Meta:
