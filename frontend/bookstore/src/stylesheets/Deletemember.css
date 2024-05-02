@@ -1,4 +1,4 @@
-.AMBackground{
+.DMBackground{
     width: 100vw;
     height: 100vh;
     background-color: rgba(50,50,50,0.89);
@@ -9,7 +9,7 @@
     top: 0;
 }
 
-.AMModal{
+.DMModal{
     justify-content: center;
     margin: 10px;
     background-color: rgb(10,10,10);
@@ -19,31 +19,17 @@
     width:fit-content;
 }
 
-.AMBtnConatiner{
+.DMBtnConatiner{
     display: flex;
     justify-content: right;
 }
 
-.AMClose{
+.DMClose{
     background-color: rgb(10,10,10);
+    padding: 5px;
 }
 
-.AMTitle{
-    margin: 10px 0 20px 0;
-}
-
-.AMName{
-    font-size: 1rem;
-    background-color: rgb(60,60,60);
-    border-radius: 0.5rem;
-    height: 35px;
-    width: 250px;
-    margin: 10px;
-    border: none;
-    color: white;
-}
-
-.AMAdd{
+.DMDelete{
     background-color: brown;
     color: white;
     height: 35px;
@@ -55,7 +41,7 @@
     text-align: center;
 }
 
-.AMValid{
+.DMValid{
     color: rgb(223, 48, 48);
     margin : 10px;
 }

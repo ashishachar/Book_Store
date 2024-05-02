@@ -1,8 +1,11 @@
 import { ImBooks } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom';
 // import React from 'react';
 function Homepage() {
+
+  const navigate = useNavigate();
   return (
     <div className="home container">
       <header>
@@ -23,7 +26,7 @@ function Homepage() {
           <div className="album py-5 bg-light">
             <div className="container">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <div className="card mb-4 box-shadow">
                     <div className="card-body">
                       <p className="card-text text-start">
@@ -36,8 +39,9 @@ function Homepage() {
                           <button
                             type="button"
                             className="btn btn-sm btn-outline-secondary"
+                            onClick={()=>{navigate('/books/add')}}
                           >
-                            Option1
+                            Add
                           </button>
                           <button
                             type="button"
@@ -58,7 +62,7 @@ function Homepage() {
                   </div>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <div className="card mb-4 box-shadow">
                     <div className="card-body">
                       <p className="card-text text-start">
@@ -71,8 +75,9 @@ function Homepage() {
                           <button
                             type="button"
                             className="btn btn-sm btn-outline-secondary"
+                            onClick={()=>{navigate('/members/add')}}
                           >
-                            Option1
+                            Add
                           </button>
                           <button
                             type="button"

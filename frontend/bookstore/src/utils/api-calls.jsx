@@ -39,17 +39,41 @@ async function getMemberByID(memID) {
 }
 
 async function getBookByID(bookID) {
-    console.log(bookID);
     const data = await axios.get(dbURL + "/books/" + bookID + "/info");
-    console.log(data.data);
     return data.data;
 }
+
+async function getTransactionsByMembId(membId){
+  const data = await axios.get(dbURL + "/user/" + membId+ "/transactions");
+  return data.data;
+}
+
+async function getTransactionsByBookId(bookId){
+  const data = await axios.get(dbURL + "/book/" + bookId+ "/transactions");
+  return data.data;
+}
+
 async function postTransaction(postInfo) {
   console.log("Posting\n", postInfo);
   await axios.post(dbURL + "/book/borrow", postInfo);
 }
 
+async function postBook(bookInfo) {
+  console.log('Posting\n',bookInfo);
+  // await axios.post(dbURL + "/book/add", bookInfo);
+}
+
+async function patchMemberById(membId, memberInfo){
+  await axios.patch(dbURL + "/users/" + membId, memberInfo)
+}
+
+async function deleteMemberById(membId){
+  await axios.delete(dbURL + "/users/" + membId)
+}
+
 export {
+    axios , 
+    dbURL ,
     apiCall , 
     getAllBooks ,
     getAllUsers ,
@@ -57,7 +81,12 @@ export {
     getTransactions ,
     getMemberByID ,
     getBookByID ,
-    postTransaction
+    postTransaction ,
+    postBook ,
+    patchMemberById ,
+    deleteMemberById ,
+    getTransactionsByMembId ,
+    getTransactionsByBookId
 }
 
 

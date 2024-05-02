@@ -19,12 +19,12 @@ class BookDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookDetails
         # fields = '__all__'
-        fields = ['author', 'title', 'no_of_copies', "categories"]
+        fields = ['book_id','author', 'title', 'no_of_copies', "categories"]
 
 class MembersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Members
-        fields = ['name', 'email_id', 'contact_no', 'penalty']
+        fields = ['id','name', 'email_id', 'contact_no', 'penalty']
 
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:

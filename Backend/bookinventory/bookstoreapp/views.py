@@ -16,7 +16,7 @@ def admin_validation(request):
         if admin_check:
             if request.data['password'] == admin_check.user_password:
                 return Response({'state': True}, status=status.HTTP_200_OK)
-            return Response({'state': False}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'state': False}, status=status.HTTP_200_OK)
         
 @api_view(['GET','POST'])
 def books_list(request):
@@ -153,4 +153,4 @@ def transaction_list(request):
         trans = Transaction.objects.all()
         serialize = TransactionSerializer(trans, many=True)
         return Response(serialize.data, status=status.HTTP_200_OK)
-    
+
