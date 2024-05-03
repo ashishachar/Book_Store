@@ -36,4 +36,12 @@ const genres = [
   { value: "Suspense" , label : "Suspense"} ,
 ];
 
-export { dummyBookData, genres };
+const options = [
+  { value: 'lower first', label: 'Lower first' },
+  { value: 'higher first', label: 'Higher first' },
+  { value: 'name (a-z)', label: 'Name (A-Z)' },
+  { value: 'name (z-a)', label: 'Name (Z-A)'}
+]
+
+
+export { dummyBookData, genres,options };

@@ -165,7 +165,9 @@ function BookList() {
           {Object.keys(showList).map((listItem, listKey) => {
             // console.log(showList[listItem]);
             return (
-              <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey} >
+
+              // <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey}>
+
               <tr  key={listKey} className=" table-light border">
                 
                 <th scope="row">
@@ -174,9 +176,11 @@ function BookList() {
                     : "--"}
                 </th>
                 <td>
+                <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey}>
                   {showList[listItem]["title"]
                     ? showList[listItem]["title"]
                     : "--"}
+                </Link>
                 </td>
                 <td>
                   {showList[listItem]["author"]
@@ -194,7 +198,7 @@ function BookList() {
                     : "--"}
                 </td>
               </tr>
-              </Link>
+              // </Link>
             );
           })}
         </tbody>
