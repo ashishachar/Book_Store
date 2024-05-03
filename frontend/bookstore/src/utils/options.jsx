@@ -43,5 +43,16 @@ const options = [
   { value: 'name (z-a)', label: 'Name (Z-A)'}
 ]
 
+const sortOpt = [
+  { value: 'borrow recent', label: 'Borrow Date (Recent first)' },
+  { value: 'borrow older', label: 'Borrow Date (Older first)' }
+];
 
-export { dummyBookData, genres,options };
+const statusOpt = [
+  { value: 'all', label:"All"},
+  { value: 'pending', label: 'Pending' },
+  { value: 'retunred', label: 'Returned' }
+];
+
+
+export { dummyBookData, genres,options, sortOpt, statusOpt };

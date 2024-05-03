@@ -5,42 +5,18 @@ import Transaction from './Transaction';
 import { getTransactions } from "../utils/api-calls";
 import { FaSearch } from 'react-icons/fa';
 import Select from "react-select";
+import { sortOpt, statusOpt } from '../utils/options';
 
 function Transactioninfo() {
     const [transacs,setTransac]=useState([]);
     useEffect(() => {
         const dataFetch = async () => {
           let data = await getTransactions();
-    
-          // data.map(d=>{
-          //   console.log(d , d.categories);
-          // })
-    
           setTransac(data);
         };
         dataFetch();
       }, []);
 
-      const options = [
-        { value: 'borrow recent', label: 'Borrow Date (Recent first)' },
-        { value: 'borrow older', label: 'Borrow Date (Older first)' },
-        { value: 'return recent', label: 'Return Date (Recent first)' },
-        { value: 'return older', label: 'Return Date(Older first)'}
-      ];
-
-      const options2 = [
-        { value: 'pending', label: 'Pending' },
-        { value: 'retunred', label: 'Returned' },
-        { value: 'all', label:"All"}
-      ];
-    // const transaclist = 
-    // [
-    //     {name: "Rancho", title: "1984" , borrowed: "25-05-2015", returned: "28-05-2015", Status:"Y"},
-    //     {name: "Snoopy", title: "Ikigai" , borrowed: "02-04-2015", returned: "null", Status:"N"},
-    //     {name: "Tippu", title: "The Notebook" , borrowed: "01-04-2015", returned: "02-04-2015", Status:"Y"},
-    //     {name: "Mothi", title: "It ends with us" , borrowed: "03-03-2015", returned: "28-03-2015", Status:"Y"},
-    //     {name: "Tiger", title: "Children of time" , borrowed: "25-02-2015", returned: "null", Status:"N"}
-    // ]
   return (
     <div className='TIContainer'>
         <div className="TIHeader">
@@ -53,7 +29,7 @@ function Transactioninfo() {
           </div>
           <Select 
             className="TISelect" 
-            options={options2} 
+            options={statusOpt} 
             placeholder = "Select Status" 
             styles={{
               control: (baseStyles, state) => ({
@@ -70,7 +46,7 @@ function Transactioninfo() {
           />
           <Select 
             className="TISelect" 
-            options={options} 
+            options={sortOpt} 
             placeholder = "Sort" 
             styles={{
               control: (baseStyles, state) => ({
