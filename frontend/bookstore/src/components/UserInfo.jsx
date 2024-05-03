@@ -23,7 +23,7 @@ function UserInfo() {
       setMember(mdata);
     };
     dataFetch().then(async()=>{
-      console.log("----",member);
+      // console.log("----",member);
       let tdata = await getTransactionsByMembId(infoId);
       setTransac(tdata);
     });
@@ -69,31 +69,44 @@ function UserInfo() {
           
         </div>
       </div>
-      <div className="mt-3">
-        <div className="container p-0">
-          <h4>All Transactions</h4>
+      {
+        transacs.length != 0 ?
+        <>
+          <div className="mt-3">
+            <div className="container p-0">
+              <h4>All Transactions</h4>
+              <div className="TIListHeader">
+                <div className='TIChars'>Member Name</div>
+                <div className='TIChars'>Book Title</div>
+                <div className='TIDates'>Borrowed on</div>
+                <div className='TIDates'>Returned on</div>
+                <div className='TIStatus'>Status</div>
+              </div>
+              <div className="TIList">
+                {
+                    Object.values(transacs).map((transac,index)=>{
+                        // console.log(">>>>",transac);
+                        return (
+                            <Transaction
+                                key={index} 
+                                infoMemb={transac.memb} 
+                                infoBook={transac.book} 
+                                infoBorrow={transac.borrow_date} 
+                                infoReturned={transac.return_date} 
+                                infoStatus={transac.status}
+                            />
+                        )
+                    })
+                }
+              </div>
+            </div>
+          </div>
+        </>:
+        <><div className='h4 mt-5'>No Transactions yet!</div></>
+      }
+      
 
-          <div className="TIList">
-            {
-                transacs ? 
-                Object.values(transacs).map((transac,index)=>{
-                    // console.log(">>>>",transac);
-                    return (
-                        <Transaction
-                            key={index} 
-                            infoMemb={transac.memb} 
-                            infoBook={transac.book} 
-                            infoBorrow={transac.borrow_date} 
-                            infoReturned={transac.return_date} 
-                            infoStatus={transac.status}
-                        />
-                    )
-                }):
-                <><div className='TIEmpty'>No transactions yet!</div></>
-
-            }
-
-//           <div className="UserInfoTable border border-dark rounded pb-3">
+{/* //           <div className="UserInfoTable border border-dark rounded pb-3">
 //             <div className="UserInfoRow d-flex align-items-center font-weight-bold border-bottom py-2">
 //               <div style={{ width: "60%" }} className="">
 //                 <b>Book Title</b>
@@ -162,11 +175,9 @@ function UserInfo() {
 //               </div>
 //               <div style={{ width: "10%" }} className="  px-2">
 //                 <MdClose></MdClose>
-//               </div>
+//               </div> */}
 
-            </div>
-        </div>
-      </div>
+            
       {openEdit && <Updatemember closeModal={setOpen} membData={member}/>}
       {openDelete && <Deletemember closeModal={setDelete} membData={member}/>}
 

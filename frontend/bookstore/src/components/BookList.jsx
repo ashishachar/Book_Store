@@ -7,6 +7,7 @@ import Header from "./Header";
 // import { Link } from "react-router-dom";
 import Select from "react-select";
 import { dummyBookData as dummyData, genres } from "../utils/options";
+import { Link } from "react-router-dom";
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -164,16 +165,22 @@ function BookList() {
           {Object.keys(showList).map((listItem, listKey) => {
             // console.log(showList[listItem]);
             return (
-              <tr key={listKey} className=" table-light border">
+
+              // <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey}>
+
+              <tr  key={listKey} className=" table-light border">
+                
                 <th scope="row">
                   {showList[listItem]["book_id"]
                     ? String(showList[listItem]["book_id"]).padStart(5, "0")
                     : "--"}
                 </th>
                 <td>
+                <Link to={'/book/info/'+showList[listItem]["book_id"]} key={listKey}>
                   {showList[listItem]["title"]
                     ? showList[listItem]["title"]
                     : "--"}
+                </Link>
                 </td>
                 <td>
                   {showList[listItem]["author"]
@@ -191,6 +198,7 @@ function BookList() {
                     : "--"}
                 </td>
               </tr>
+              // </Link>
             );
           })}
         </tbody>
