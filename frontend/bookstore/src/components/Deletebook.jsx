@@ -3,15 +3,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../stylesheets/Deletebook.css";
+import { deleteBookById } from '../utils/api-calls';
 
 function Deletebook({closeModal,bookData}) {
     const [success,setSuccess] = useState(false);
 
     async function deleteBook(){
+      await deleteBookById(bookData.book_id).then(()=>{
         setSuccess(true);
-    //   await deleteBookById(book.book_id).then(()=>{
-    //     setSuccess(true);
-    //   });
+      });
     }
 
     function refreshPage(){
