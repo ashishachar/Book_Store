@@ -8,28 +8,17 @@ import { getBookByID, getMemberByID } from '../utils/api-calls';
 
 
 function Transaction({infoMemb, infoBook, infoBorrow, infoReturned, infoStatus}) {
-    const tranacstatus=infoStatus;
-    console.log()
-    const [member,setMember] = useState([]);
-    const [book,setBook] = useState([]);
-    useEffect(() => {
-        const dataFetch = async () => {
-          let mdata = await getMemberByID(infoMemb);
-          let bdata = await getBookByID(infoBook);
-          setMember(mdata);
-          setBook(bdata);
-        };
-        dataFetch();
-      }, []);
+    
+    
       
   return (
     <div className='TSContainer'>
-        <div className='TSChars'>{member.name}</div>
-        <div className='TSChars'>{book.title}</div>
+        <div className='TSChars'>{infoMemb}</div>
+        <div className='TSChars'>{infoBook}</div>
         <div className='TSDates'>{infoBorrow}</div>
         <div className='TSDates'>{infoReturned}</div>
         <div className='TSStatus'>
-            {tranacstatus == true ?
+            {infoStatus == true ?
                 <FaCheckCircle className="TSDone"/>:
                 <IoMdCloseCircle className='TSPending' />
             }

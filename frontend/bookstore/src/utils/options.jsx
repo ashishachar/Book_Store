@@ -51,7 +51,7 @@ const sortOpt = [
 const statusOpt = [
   { value: 'all', label:"All"},
   { value: 'pending', label: 'Pending' },
-  { value: 'retunred', label: 'Returned' }
+  { value: 'returned', label: 'Returned' }
 ];
 
 
