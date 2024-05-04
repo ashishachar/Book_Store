@@ -1,2 +1,6 @@
 # Book_Store
-Book Rental Inventory
+# Frontend
+This folder will contain all the files related to frontend implementation.
+JavaScripts
+HTML
+CSS
