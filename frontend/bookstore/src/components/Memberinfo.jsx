@@ -20,7 +20,7 @@ function Memberinfo() {
   });
 
   const filterMethod =(e)=>{
-    console.log('Filter method : ',e.target.value);
+    // console.log('Filter method : ',e.target.value);
     setSearch({...search , searchKey : e.target.value});
     let resList = [];
     if (e.target.value != "") {
@@ -34,19 +34,19 @@ function Memberinfo() {
             .toLowerCase()
             .includes(e.target.value.toLowerCase())
         ) {
-          console.log(user);
+          // console.log(user);
           resList.push(user);
         }
       });
     } else {
-      console.log('Empty',showList);
+      // console.log('Empty',showList);
       resList = users;
     }
     setShowList(resList);
   }
 
   const updateSortMethod = (e) => {
-    console.log('Update');
+    // console.log('Update');
     let resList = [];
     if (search.searchKey != "") {
       users.map((user) => {
@@ -59,7 +59,7 @@ function Memberinfo() {
             .toLowerCase()
             .includes(search.searchKey.toLowerCase())
         ) {
-          console.log(user);
+          // console.log(user);
           resList.push(user);
         }
       });
@@ -93,7 +93,7 @@ function Memberinfo() {
   }, []);
 
   useEffect(() => {
-    console.log(search, users);
+    // console.log(search, users);
   }, [search]);
 
 

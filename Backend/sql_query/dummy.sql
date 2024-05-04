@@ -82,7 +82,7 @@ values (1,'Fantasy'),
 
 -- To update the transaction table
 insert into bookstoreapp_transaction(book_id,memb_id,borrow_date,return_date,status) 
-values (9,3,current_date,NULL,False)
+values (9,3,current_date,NULL,False),
 (8,2,'5-04-2024','12-04-2024',True)
 
 
