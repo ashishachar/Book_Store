@@ -12,21 +12,19 @@ function Transactioninfo() {
     const [showList, setShowList] = useState([]);
     const [search, setSearch] = useState({
       searchKey: "",
-      statusKey: statusOpt[0],
-      sortKey: sortOpt[0]
+      statusKey: "",
+      sortKey: ""
     });
 
-    const filterMethod =(e)=>{
-      console.log('Filter method : ',e.target.value);
-      setSearch({...search , searchKey : e.target.value});
+    useEffect(()=>{
       let resList = [];
-      if (e.target.value != "") {
+      if (search.searchKey != "") {
         transacs.map((transac) => {
           if (
-            transac.member_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            transac.member_name.toLowerCase().includes(search.searchKey.toLowerCase()) ||
             transac.book_title
               .toLowerCase()
-              .includes(e.target.value.toLowerCase()) 
+              .includes(search.searchKey.toLowerCase()) 
           ){
               console.log(transac);
               resList.push(transac);
@@ -37,36 +35,15 @@ function Transactioninfo() {
         resList = transacs;
       }
       setShowList(resList);
-    }
-
-    const statusMethod = (e) => {
-      console.log('Status');
-      let resList = [];
-      if (search.searchKey != "") {
-        transacs.map((transac) => {
-          if (
-            transac.member_name.toLowerCase().includes(search.searchKey.toLowerCase()) ||
-            transac.book_title
-              .toLowerCase()
-              .includes(search.searchKey.toLowerCase()) 
-          ) {
-            console.log(transac);
-            resList.push(transac);
-          }
-        });
-      } else {
-        resList = transacs;
-      }
-      setSearch({ ...search, statusKey: e });
       let result = [];
-      if (statusOpt[1].value == e.value) {
+      if (statusOpt[1].value == search.statusKey) {
         console.log(statusOpt[1].value)
         resList.map((res)=>{
           if(res.status == false){
             result.push(res)
           }
         });
-      } else if (statusOpt[2].value == e.value) {
+      } else if (statusOpt[2].value == search.statusKey) {
         console.log(statusOpt[2].value)
         resList.map((res)=>{
           if(res.status == true){
@@ -77,8 +54,20 @@ function Transactioninfo() {
         result = resList;
       }
       setShowList(result);
+      let finalres = [];
+      if(sortOpt[0].value == search.sortKey){
+        console.log("Descending");
+        finalres = result.sort((a,b)=>{return b.borrow_date.localeCompare(a.borrow_date)})
+      }else if(sortOpt[1].value == search.sortKey){
+        console.log("Ascending");
+        finalres = result.sort((a,b)=>{return a.borrow_date.localeCompare(b.borrow_date)})
+      }else{
+        finalres = result;
+      }
+      setShowList(finalres);
       console.log(">>>",showList);
-    };
+    },[search]);
+
     
 
     useEffect(() => {
@@ -100,7 +89,7 @@ function Transactioninfo() {
             <input 
             value={search.searchKey}
             onChange={(e) => {
-              filterMethod(e)
+              setSearch({ ...search, searchKey: e.target.value })
             }}
             className="TISearch" 
             type="text" 
@@ -114,7 +103,7 @@ function Transactioninfo() {
             placeholder = "Select Status" 
             value={search.statusKey}
             onChange={(e) => {
-              statusMethod(e);
+              setSearch({ ...search, statusKey: e.value })
             }}
             styles={{
               control: (baseStyles, state) => ({
@@ -133,6 +122,10 @@ function Transactioninfo() {
             className="TISelect" 
             options={sortOpt} 
             placeholder = "Sort" 
+            value={search.sortKey}
+            onChange={(e) => {
+              setSearch({ ...search, sortKey: e.value })
+            }}
             styles={{
               control: (baseStyles, state) => ({
                 ...baseStyles,
