@@ -4,6 +4,8 @@ import "../stylesheets/Transactioninfo.css";
 import Transaction from './Transaction';
 import { getTransactions } from "../utils/api-calls";
 import { FaSearch } from 'react-icons/fa';
+import { FaFilter } from "react-icons/fa6";
+import { TbArrowsSort } from "react-icons/tb";
 import Select from "react-select";
 import { sortOpt, statusOpt } from '../utils/options';
 
@@ -31,7 +33,7 @@ function Transactioninfo() {
           }
         });
       } else {
-        console.log('Empty',showList);
+        // console.log('Empty',showList);
         resList = transacs;
       }
       setShowList(resList);
@@ -56,16 +58,20 @@ function Transactioninfo() {
       setShowList(result);
       let finalres = [];
       if(sortOpt[0].value == search.sortKey){
-        console.log("Descending");
-        finalres = result.sort((a,b)=>{return b.borrow_date.localeCompare(a.borrow_date)})
+        // console.log("Descending");
+        finalres = result.sort((a,b)=>{
+          return a.borrow_date.localeCompare(b.borrow_date);
+        })
       }else if(sortOpt[1].value == search.sortKey){
-        console.log("Ascending");
-        finalres = result.sort((a,b)=>{return a.borrow_date.localeCompare(b.borrow_date)})
+        // console.log("Ascending");
+        finalres = result.sort((a,b)=>{
+          return b.borrow_date.localeCompare(a.borrow_date);
+        })
       }else{
         finalres = result;
       }
       setShowList(finalres);
-      console.log(">>>",showList);
+      // console.log(">>>",showList);
     },[search]);
 
     
@@ -86,6 +92,7 @@ function Transactioninfo() {
         </div>
         <div className="TISearchContainer">
           <div className="TISearchContainer d-flex">
+            <div className="TISearchBtn ms-1"> <FaSearch/></div>
             <input 
             value={search.searchKey}
             onChange={(e) => {
@@ -95,13 +102,14 @@ function Transactioninfo() {
             type="text" 
             placeholder="Enter Member Name or Book Title">
             </input>
-            <button className="TISearchBtn ms-1"> <FaSearch/></button>
           </div>
+          <div className="TISearchContainer d-flex">
+            <div className="TISearchBtn ms-1"> <FaFilter/></div>
           <Select 
             className="TISelect" 
             options={statusOpt} 
             placeholder = "Select Status" 
-            value={search.statusKey}
+            // value={search.statusKey}
             onChange={(e) => {
               setSearch({ ...search, statusKey: e.value })
             }}
@@ -109,8 +117,10 @@ function Transactioninfo() {
               control: (baseStyles, state) => ({
                 ...baseStyles,
                 borderWidth:2,
-                borderRadius: 17,
+                borderTopRightRadius: 17,
+                borderBottomRightRadius: 17,
                 borderColor: 'black',
+                height: 40
               }),
               option: (provided, state) =>({
                 ...provided,
@@ -118,11 +128,14 @@ function Transactioninfo() {
               })
             }}
           />
+          </div>
+          <div className="TISearchContainer d-flex">
+          <div className="TISearchBtn ms-1 fw-bolder"> <TbArrowsSort/></div>
           <Select 
             className="TISelect" 
             options={sortOpt} 
             placeholder = "Sort" 
-            value={search.sortKey}
+            // value={search.sortKey}
             onChange={(e) => {
               setSearch({ ...search, sortKey: e.value })
             }}
@@ -130,7 +143,8 @@ function Transactioninfo() {
               control: (baseStyles, state) => ({
                 ...baseStyles,
                 borderWidth:2,
-                borderRadius: 17,
+                borderTopRightRadius: 17,
+                borderBottomRightRadius: 17,
                 borderColor: 'black',
               }),
               option: (provided, state) =>({
@@ -139,6 +153,7 @@ function Transactioninfo() {
               })
             }}
           />
+          </div>
         </div>
         <div className="TIListHeader">
           <div className='TIChars'>Member Name</div>
