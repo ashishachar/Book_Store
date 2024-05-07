@@ -22,10 +22,10 @@ function BookList() {
   }, [search, showList]);
 
   const updateFilter = () => {
-    console.log("adding Filters");
+    // console.log("adding Filters");
     let res = [];
     if (search.searchKeyWord == "" && search.categories.length == 0) {
-      console.log("Emtpy search . No libros aqui");
+      // console.log("Emtpy search . No libros aqui");
       setShowList(books);
       return;
     }
@@ -43,7 +43,7 @@ function BookList() {
         res.push(book);
       }
     });
-    console.log(res);
+    // console.log(res);
     let catList = [];
     search.categories.forEach((cat) => {
       // console.log(cat);
@@ -56,7 +56,7 @@ function BookList() {
       finalRes = res;
     } else {
       res.forEach((book) => {
-        console.log(book);
+        // console.log(book);
         const d = book.categories.some((bookcat) =>
           catSet.includes(bookcat.toLowerCase())
         );
@@ -65,7 +65,7 @@ function BookList() {
         }
       });
     }
-    console.log(finalRes);
+    // console.log(finalRes);
     setShowList(finalRes);
   };
   useEffect(() => {

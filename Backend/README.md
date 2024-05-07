@@ -8,7 +8,7 @@ SQL
 pip install django-cors-headers
 pip install djangorestframework
 pip install django-environ
-
+pip install whitenoise
 
 cd Backend\bookinventory
 python manage.py makemigrations <only once>

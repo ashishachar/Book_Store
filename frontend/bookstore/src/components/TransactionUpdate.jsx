@@ -19,25 +19,25 @@ function TransactionUpdate() {
   };
 
   const onChangeBook = (e) => {
-    console.log(e);
+    // console.log(e);
     // console.log(books , info );
     setInfo({ ...info, book: e });
   };
 
   const onChangeMember = (e) => {
-    console.log(e);
+    // console.log(e);
     setInfo({ ...info, member: e });
   };
 
   const onClear = () => {
-    console.log("Cleared");
+    // console.log("Cleared");
     setInfo({ member: "", book: "", borrowDate: getDate() });
   };
 
   const onSubmitForm = async() =>{
-    console.log('New Book Borrowed');
+    // console.log('New Book Borrowed');
     let res = {borrow_date : info.borrowDate , status : false , return_date : null , memb : info.member.value , book : info.book.value}
-    console.log(res);
+    // console.log(res);
     await postTransaction(res);
   }
 

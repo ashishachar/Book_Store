@@ -22,11 +22,11 @@ function BookUpdate() {
   },[]);
 
   useEffect(()=>{
-    console.log(info);
+    // console.log(info);
   },[info]);
 
   const  onSubmitMeth = () =>{
-    console.log('New Book Added : ');
+    // console.log('New Book Added : ');
     let res = info ;
     let catTemp =[] ;
     for(let category in res['categories'])
@@ -34,14 +34,14 @@ function BookUpdate() {
       catTemp.push(res['categories'][category]['value']);
     }
     res['categories'] = catTemp ;
-    console.log(res);
+    // console.log(res);
 
     //Call post metod to add new Book
 
   }
   
   const onClearMeth =()=>{
-    console.log('Form Cleared : ');
+    // console.log('Form Cleared : ');
     setInfo(
       {title : '' , author : '' , no_of_copies:0, categories : []}
     )

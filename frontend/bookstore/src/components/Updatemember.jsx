@@ -14,7 +14,7 @@ function Updatemember({closeModal,membData}) {
       penalty: membData.penalty
     });
 
-    console.log(membInfo);
+    // console.log(membInfo);
 
     async function addMember(){
         if(membInfo.name == ""){

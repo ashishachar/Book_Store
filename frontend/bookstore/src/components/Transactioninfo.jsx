@@ -40,14 +40,14 @@ function Transactioninfo() {
       setShowList(resList);
       let result = [];
       if (statusOpt[1].value == search.statusKey) {
-        console.log(statusOpt[1].value)
+        // console.log(statusOpt[1].value)
         resList.map((res)=>{
           if(res.status == false){
             result.push(res)
           }
         });
       } else if (statusOpt[2].value == search.statusKey) {
-        console.log(statusOpt[2].value)
+        // console.log(statusOpt[2].value)
         resList.map((res)=>{
           if(res.status == true){
             result.push(res)
