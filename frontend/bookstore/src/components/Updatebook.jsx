@@ -6,7 +6,7 @@ import Bookinfo from './Bookinfo';
 import Select from 'react-select';
 
 function Updatebook({closeModal,bookData}) {
-    console.log(">>>",bookData);
+    // console.log(">>>",bookData);
     const [success,setSuccess] = useState(false);
     // const [valid, setValid] = useState("");
     const [bookInfo,setBookInfo] = useState({
@@ -17,7 +17,7 @@ function Updatebook({closeModal,bookData}) {
     });
 
     async function addBook(){
-        console.log("Update");
+        // console.log("Update");
         setSuccess(true);
     }
 

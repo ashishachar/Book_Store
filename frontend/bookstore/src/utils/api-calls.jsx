@@ -54,7 +54,7 @@ async function getTransactionsByBookId(bookId){
 }
 
 async function postTransaction(postInfo) {
-  console.log("Posting\n", postInfo);
+  // console.log("Posting\n", postInfo);
   await axios.post(dbURL + "/book/borrow", postInfo);
 }
 

@@ -8,13 +8,22 @@ import {redirect, useNavigate} from 'react-router-dom';
 function Login() {
   const [info , setInfo] = useState({user : '' , password : ''});
   const navigate = useNavigate();
+  useEffect(()=>{
+    let loggedIn = localStorage.getItem('usr');
+    if(loggedIn)
+    {
+      navigate('/home');
+    }
+  } , []);
+
   const onSubmitMeth =()=>{
-    console.log('Loggin in : ',info);
+    console.log('Loggin check : ',info.user);
     const loginMeth = async ()=>{
       await axios.post(dbURL+"/admins/" , info).then(res=>{
         // console.log(res.data.state);
         if(res && res.data.state)
         {
+          localStorage.setItem('usr' , info.user );
           navigate('/home');
         }
         else{

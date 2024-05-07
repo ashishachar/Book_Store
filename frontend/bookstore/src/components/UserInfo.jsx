@@ -7,7 +7,7 @@ import { getMemberByID, getTransactionsByMembId } from "../utils/api-calls";
 import Updatemember from './Updatemember';
 import Deletemember from './Deletemember';
 import Transaction from './Transaction';
-
+import Header from './Header';
 
 
 function UserInfo() {
@@ -33,6 +33,7 @@ function UserInfo() {
   // console.log("dbhdgf",member);
   return (
     <div className="container">
+      <Header />
       <div className="container bg-dark border rounded mt-3">
         <div className="row">
           <div className="col-md-8">

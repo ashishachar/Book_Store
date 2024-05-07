@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import "../stylesheets/Transactioninfo.css";
 import Transaction from './Transaction';
+import Header from './Header';
 import { getTransactions } from "../utils/api-calls";
 import { FaSearch } from 'react-icons/fa';
 import { FaFilter } from "react-icons/fa6";
@@ -39,14 +40,14 @@ function Transactioninfo() {
       setShowList(resList);
       let result = [];
       if (statusOpt[1].value == search.statusKey) {
-        console.log(statusOpt[1].value)
+        // console.log(statusOpt[1].value)
         resList.map((res)=>{
           if(res.status == false){
             result.push(res)
           }
         });
       } else if (statusOpt[2].value == search.statusKey) {
-        console.log(statusOpt[2].value)
+        // console.log(statusOpt[2].value)
         resList.map((res)=>{
           if(res.status == true){
             result.push(res)
@@ -86,9 +87,10 @@ function Transactioninfo() {
     }, []);
     
   return (
-    <div className='TIContainer'>
-        <div className="TIHeader">
-        <h2>Transaction Info</h2>
+    <div className='TIContainer container'>
+        <Header />
+        <div className="TIHeader rounded mt-2">
+        <h4>Transaction Info</h4>
         </div>
         <div className="TISearchContainer">
           <div className="TISearchContainer d-flex">
