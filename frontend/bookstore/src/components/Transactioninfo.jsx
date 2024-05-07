@@ -4,43 +4,87 @@ import "../stylesheets/Transactioninfo.css";
 import Transaction from './Transaction';
 import { getTransactions } from "../utils/api-calls";
 import { FaSearch } from 'react-icons/fa';
+import { FaFilter } from "react-icons/fa6";
+import { TbArrowsSort } from "react-icons/tb";
 import Select from "react-select";
+import { sortOpt, statusOpt } from '../utils/options';
 
 function Transactioninfo() {
     const [transacs,setTransac]=useState([]);
+    const [showList, setShowList] = useState([]);
+    const [search, setSearch] = useState({
+      searchKey: "",
+      statusKey: "",
+      sortKey: ""
+    });
+
+    useEffect(()=>{
+      let resList = [];
+      if (search.searchKey != "") {
+        transacs.map((transac) => {
+          if (
+            transac.member_name.toLowerCase().includes(search.searchKey.toLowerCase()) ||
+            transac.book_title
+              .toLowerCase()
+              .includes(search.searchKey.toLowerCase()) 
+          ){
+              console.log(transac);
+              resList.push(transac);
+          }
+        });
+      } else {
+        // console.log('Empty',showList);
+        resList = transacs;
+      }
+      setShowList(resList);
+      let result = [];
+      if (statusOpt[1].value == search.statusKey) {
+        console.log(statusOpt[1].value)
+        resList.map((res)=>{
+          if(res.status == false){
+            result.push(res)
+          }
+        });
+      } else if (statusOpt[2].value == search.statusKey) {
+        console.log(statusOpt[2].value)
+        resList.map((res)=>{
+          if(res.status == true){
+            result.push(res)
+          }
+        });
+      } else {
+        result = resList;
+      }
+      setShowList(result);
+      let finalres = [];
+      if(sortOpt[0].value == search.sortKey){
+        // console.log("Descending");
+        finalres = result.sort((a,b)=>{
+          return a.borrow_date.localeCompare(b.borrow_date);
+        })
+      }else if(sortOpt[1].value == search.sortKey){
+        // console.log("Ascending");
+        finalres = result.sort((a,b)=>{
+          return b.borrow_date.localeCompare(a.borrow_date);
+        })
+      }else{
+        finalres = result;
+      }
+      setShowList(finalres);
+      // console.log(">>>",showList);
+    },[search]);
+
+    
+
     useEffect(() => {
-        const dataFetch = async () => {
-          let data = await getTransactions();
+      const dataFetch = async () => {
+        let data = await getTransactions();
+        setTransac(data);
+        setShowList(data);
+      };
+      dataFetch();
+    }, []);
     
-          // data.map(d=>{
-          //   console.log(d , d.categories);
-          // })
-    
-          setTransac(data);
-        };
-        dataFetch();
-      }, []);
-
-      const options = [
-        { value: 'borrow recent', label: 'Borrow Date (Recent first)' },
-        { value: 'borrow older', label: 'Borrow Date (Older first)' },
-        { value: 'return recent', label: 'Return Date (Recent first)' },
-        { value: 'return older', label: 'Return Date(Older first)'}
-      ];
-
-      const options2 = [
-        { value: 'pending', label: 'Pending' },
-        { value: 'retunred', label: 'Returned' },
-        { value: 'all', label:"All"}
-      ];
-    // const transaclist = 
-    // [
-    //     {name: "Rancho", title: "1984" , borrowed: "25-05-2015", returned: "28-05-2015", Status:"Y"},
-    //     {name: "Snoopy", title: "Ikigai" , borrowed: "02-04-2015", returned: "null", Status:"N"},
-    //     {name: "Tippu", title: "The Notebook" , borrowed: "01-04-2015", returned: "02-04-2015", Status:"Y"},
-    //     {name: "Mothi", title: "It ends with us" , borrowed: "03-03-2015", returned: "28-03-2015", Status:"Y"},
-    //     {name: "Tiger", title: "Children of time" , borrowed: "25-02-2015", returned: "null", Status:"N"}
-    // ]
   return (
     <div className='TIContainer'>
         <div className="TIHeader">
@@ -48,19 +92,35 @@ function Transactioninfo() {
         </div>
         <div className="TISearchContainer">
           <div className="TISearchContainer d-flex">
-            <input className="TISearch" type="text" placeholder="Enter Member Name or Book Title"></input>
-            <button className="TISearchBtn ms-1"> <FaSearch/></button>
+            <div className="TISearchBtn ms-1"> <FaSearch/></div>
+            <input 
+            value={search.searchKey}
+            onChange={(e) => {
+              setSearch({ ...search, searchKey: e.target.value })
+            }}
+            className="TISearch" 
+            type="text" 
+            placeholder="Enter Member Name or Book Title">
+            </input>
           </div>
+          <div className="TISearchContainer d-flex">
+            <div className="TISearchBtn ms-1"> <FaFilter/></div>
           <Select 
             className="TISelect" 
-            options={options2} 
+            options={statusOpt} 
             placeholder = "Select Status" 
+            // value={search.statusKey}
+            onChange={(e) => {
+              setSearch({ ...search, statusKey: e.value })
+            }}
             styles={{
               control: (baseStyles, state) => ({
                 ...baseStyles,
                 borderWidth:2,
-                borderRadius: 17,
+                borderTopRightRadius: 17,
+                borderBottomRightRadius: 17,
                 borderColor: 'black',
+                height: 40
               }),
               option: (provided, state) =>({
                 ...provided,
@@ -68,15 +128,23 @@ function Transactioninfo() {
               })
             }}
           />
+          </div>
+          <div className="TISearchContainer d-flex">
+          <div className="TISearchBtn ms-1 fw-bolder"> <TbArrowsSort/></div>
           <Select 
             className="TISelect" 
-            options={options} 
+            options={sortOpt} 
             placeholder = "Sort" 
+            // value={search.sortKey}
+            onChange={(e) => {
+              setSearch({ ...search, sortKey: e.value })
+            }}
             styles={{
               control: (baseStyles, state) => ({
                 ...baseStyles,
                 borderWidth:2,
-                borderRadius: 17,
+                borderTopRightRadius: 17,
+                borderBottomRightRadius: 17,
                 borderColor: 'black',
               }),
               option: (provided, state) =>({
@@ -85,6 +153,7 @@ function Transactioninfo() {
               })
             }}
           />
+          </div>
         </div>
         <div className="TIListHeader">
           <div className='TIChars'>Member Name</div>
@@ -95,14 +164,14 @@ function Transactioninfo() {
         </div>
         <div className="TIList">
             {
-                transacs ? 
-                Object.values(transacs).map((transac,index)=>{
+                showList ? 
+                Object.values(showList).map((transac,index)=>{
                     // console.log(">>>>",transac);
                     return (
                         <Transaction 
                             key={index} 
-                            infoMemb={transac.memb} 
-                            infoBook={transac.book} 
+                            infoMemb={transac.member_name} 
+                            infoBook={transac.book_title} 
                             infoBorrow={transac.borrow_date} 
                             infoReturned={transac.return_date} 
                             infoStatus={transac.status}
@@ -110,7 +179,6 @@ function Transactioninfo() {
                     )
                 }):
                 <><div className='TIEmpty'>No transactions yet!</div></>
-
             }
         </div>
     </div>
