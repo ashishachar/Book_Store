@@ -2,10 +2,20 @@ import { ImBooks } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom';
-// import React from 'react';
+import {useEffect} from 'react';
 function Homepage() {
 
   const navigate = useNavigate();
+  useEffect(()=>{
+    let isLoggedIn = localStorage.getItem('usr');
+    if(isLoggedIn)
+    {
+      navigate('/home');
+    }
+    else{
+      navigate('/login');
+    }
+  },[]);
   return (
     <div className="home container">
       <header>
