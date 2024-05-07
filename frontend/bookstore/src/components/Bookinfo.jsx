@@ -7,6 +7,7 @@ import { getBookByID, getTransactionsByBookId } from "../utils/api-calls";
 import Updatebook from './Updatebook';
 import Deletebook from './Deletebook';
 import Transaction from './Transaction';
+import Header from './Header';
 
 
 function Bookinfo() {
@@ -32,6 +33,7 @@ function Bookinfo() {
   // console.log("dbhdgf",member);
   return (
     <div className="container">
+      <Header />
       <div className="container bg-dark border rounded mt-3">
         <div className="row">
           <div className="col-md-8">

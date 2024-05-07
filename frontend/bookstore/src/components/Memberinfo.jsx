@@ -102,7 +102,7 @@ function Memberinfo() {
       <Header />
       <div className="MIContainer pt-3">
         <div className="MIHeader rounded">
-          <h2>Members&#39; Info</h2>
+          <h4>Members&#39; Info</h4>
         </div>
         <div className="MIAddContainer">
           <div className="MISearchContainer d-flex">

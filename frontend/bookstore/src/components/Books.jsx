@@ -5,30 +5,11 @@ import { FaPlus } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import {dummyBookData as dummyData} from '../utils/options';
 
 function Books() {
   const [books, setBooks] = useState([]);
 
-  const dummyData = [
-    {
-      id: "0000",
-      title: "Wimpy Kid",
-      author: "Greg",
-      categories: [{ categ: "Comedy" }, { categ: "Adventure" }],
-    },
-    {
-      id: "1",
-      title: "Wimpy Kid V2.0",
-      author: "Greg",
-      categories: [{ categ: "Comedy" }, { categ: "Adventure" }],
-    },
-    {
-      id: "2",
-      title: "Wimpy Kid V3.0",
-      author: "Greg",
-      categories: [{ categ: "Comedy" }, { categ: "Adventure" }],
-    },
-  ];
   useEffect(() => {
     const dataFetch = async () => {
       try {
