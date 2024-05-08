@@ -154,7 +154,7 @@ def main():
     # database location and database name
     # store sqlite file in same directory as settings.py
     dbLoc = r"C:\Users\dimi\PycharmProjects\bookStore\Book_Store\Backend\bookinventory"
-    databaseName =  r"bookstoredb.db"
+    databaseName =  r"db.sqlite3"
 
     database = f"{dbLoc}\{databaseName}"    
     print(database)

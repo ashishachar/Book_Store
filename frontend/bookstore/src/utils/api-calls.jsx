@@ -1,5 +1,8 @@
 import axios from "axios";
-const dbURL = "http://127.0.0.1:8000";
+// Localhost 
+// const dbURL = "http://127.0.0.1:8000";
+// prod backend url
+const dbURL = 'http://bpksan.pythonanywhere.com/';
 
 async function apiCall(reqUrl) {
   const data = await axios.get(dbURL + reqUrl);

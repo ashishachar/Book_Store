@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'bookinventory.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'bookstoredb.db'
+        'NAME': 'db.sqlite3'
     }
 }
 
