@@ -148,11 +148,11 @@ function BookList() {
       <table className="table table-dark">
         <thead className="thead">
           <tr>
-            <th scope="col">#ID</th>
+            <th className='d-none d-md-block' scope="col">#ID</th>
             <th scope="col">Book</th>
             <th scope="col">Author</th>
             <th scope="col">Genre</th>
-            <th scope="col">Copies</th>
+            <th className='d-none d-md-block' scope="col">Copies</th>
           </tr>
         </thead>
         <tbody>
@@ -170,7 +170,7 @@ function BookList() {
 
               <tr  key={listKey} className=" table-light border">
                 
-                <th scope="row">
+                <th className='d-none d-md-block' scope="row">
                   {showList[listItem]["book_id"]
                     ? String(showList[listItem]["book_id"]).padStart(5, "0")
                     : "--"}
@@ -192,7 +192,7 @@ function BookList() {
                     ? showList[listItem]["categories"].join(", ")
                     : "--"}
                 </td>
-                <td>
+                <td className='d-none d-md-block'>
                   {showList[listItem]["no_of_copies"]
                     ? showList[listItem]["no_of_copies"]
                     : "--"}

@@ -114,39 +114,39 @@ function Homepage() {
           <table className="table table-hover">
             <thead className="thead-dark">
               <tr>
-                <th scope="col">#ID</th>
+                <th className="d-none d-md-block" scope="col">#ID</th>
                 <th scope="col">Member</th>
                 <th scope="col">Book Title</th>
-                <th scope="col">Borrow Date</th>
-                <th scope="col">Return Status</th>
+                <th className="d-none d-md-block" scope="col">Borrow Date</th>
+                <th scope="col">Return </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">001</th>
+                <th className="d-none d-md-block" scope="row">001</th>
                 <td>Rancho</td>
-                <td>Harry Potter and the Prisoner of Azkaban</td>
-                <td>12-April-2024</td>
+                <td className="w-50">Harry Potter and the Prisoner of Azkaban</td>
+                <td className="d-none d-md-block">12-April-2024</td>
                 <td>No</td>
               </tr>
               <tr>
-                <th scope="row">001</th>
+                <th className="d-none d-md-block" scope="row">001</th>
                 <td>Rancho</td>
                 <td>Harry Potter and the Prisoner of Azkaban</td>
-                <td>12-April-2024</td>
+                <td className="d-none d-md-block">12-April-2024</td>
                 <td>No</td>
               </tr>
               <tr>
-                <th scope="row">001</th>
+                <th className="d-none d-md-block" scope="row">001</th>
                 <td>Rancho</td>
                 <td>Harry Potter and the Prisoner of Azkaban</td>
-                <td>12-April-2024</td>
+                <td className="d-none d-md-block">12-April-2024</td>
                 <td>No</td>
               </tr>
             </tbody>
           </table>
           <div className="py-3">
-            <Link to={"/transactions"}>
+            <Link to={"/"}>
               <div className="btn btn-primary">
                 All Transactions <FaArrowRight />
               </div>
